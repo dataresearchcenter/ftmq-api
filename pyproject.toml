@@ -33,7 +33,7 @@ fakeredis = "^2.26.1"
 ftmq-search = "^0.0.1"
 
 [tool.poetry.group.dev.dependencies]
-flake8 = "^7.1.1"
+flake8 = "^7.1.2"
 black = "^24.10.0"
 pre-commit = "^4.0.1"
 ipdb = "^0.13.13"
