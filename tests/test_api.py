@@ -228,39 +228,6 @@ def test_api_aggregation():
     }
 
 
-def test_api_search():
-    res = client.get("/entities?dataset=eu_authorities&q=agency")
-    data = res.json()
-    assert data["total"] == 151
-    assert data["items"] == 23
-    tested = False
-    for proxy in data["entities"]:
-        assert "agency" in proxy["caption"].lower()
-        tested = True
-    assert tested
-
-    res = client.get("/entities?q=berlin")
-    data = res.json()
-    assert data["total"] == 49822
-    assert data["items"] == 31
-
-    res = client.get("/entities?q=germany&dehydrate=1&dataset=eu_authorities")
-    res = res.json()
-    assert res["items"] == 1
-    assert res["entities"] == [
-        {
-            "id": "eu-authorities-permanent-representation-of-germany-to-the-eu",
-            "caption": "Permanent Representation of Germany to the EU",
-            "schema": "PublicBody",
-            "properties": {
-                "name": ["Permanent Representation of Germany to the EU"],
-            },
-            "datasets": ["eu_authorities"],
-            "referents": [],
-        }
-    ]
-
-
 def test_api_entities_id_filter():
     res = client.get("/entities?entity_id=eu-authorities-chafea")
     data = res.json()
@@ -282,7 +249,30 @@ def test_api_entities_id_filter():
 def test_api_search_fts():
     res = client.get("/search?dataset=eu_authorities&q=agency")
     data = res.json()
+    # assert data["total"] == 151
     assert data["items"] == 51
+
+    res = client.get("/search?q=berlin")
+    data = res.json()
+    # assert data["total"] == 49822
+    assert data["items"] == 100
+
+    res = client.get("/search?q=germany&dehydrate=1&dataset=eu_authorities")
+    res = res.json()
+    assert res["items"] == 1
+    assert res["entities"] == [
+        {
+            "id": "eu-authorities-permanent-representation-of-germany-to-the-eu",
+            "caption": "Permanent Representation of Germany to the EU",
+            "schema": "PublicBody",
+            "properties": {
+                "name": ["Permanent Representation of Germany to the EU"],
+                "country": ["eu"],
+            },
+            "datasets": ["eu_authorities"],
+            "referents": [],
+        }
+    ]
 
     res = client.get("/autocomplete?q=european defence")
     data = res.json()

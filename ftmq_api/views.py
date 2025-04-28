@@ -153,7 +153,7 @@ def search(request: Request, authenticated: bool | None = False) -> EntitiesResp
     params.q = None
     query = SearchQuery.from_params(params)
     store = get_search_store()
-    entities = (e.as_proxy() for e in store.search(q, query))
+    entities = (e.to_proxy() for e in store.search(q, query))
     return EntitiesResponse.from_view(
         request=request,
         entities=entities,
@@ -161,7 +161,7 @@ def search(request: Request, authenticated: bool | None = False) -> EntitiesResp
     )
 
 
-@anycache(key_func=get_cache_key, serialization_mode="pickle")
+@anycache(key_func=get_cache_key, model=AutocompleteResponse)
 def autocomplete(request, q: str) -> AutocompleteResponse:
     if q is None or len(q) < 4:
         raise HTTPException(400, [f"Invalid search query: `{q}`"])
