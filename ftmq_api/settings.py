@@ -52,7 +52,7 @@ class Settings(BaseSettings):
 
     Note:
         All settings can be set via environment variables in uppercase,
-        prepending `ANYSTORE_` (except for those with a given prefix)
+        prepending `FTMQ_API_` (except for those with a given prefix)
     """
 
     model_config = SettingsConfigDict(
