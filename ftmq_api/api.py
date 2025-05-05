@@ -1,10 +1,11 @@
 import secrets
 
+from anystore.io import smart_read
 from fastapi import Depends, FastAPI, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 
-from ftmq_api import __version__, settings, views
+from ftmq_api import __version__, views
 from ftmq_api.logging import get_logger
 from ftmq_api.query import QueryParams, SearchQueryParams
 from ftmq_api.serialize import (
@@ -16,26 +17,34 @@ from ftmq_api.serialize import (
     EntityResponse,
     ErrorResponse,
 )
-from ftmq_api.settings import FTM_STORE_URI
+from ftmq_api.settings import DEFAULT_DESCRIPTION, Settings
 from ftmq_api.store import Datasets
 
 log = get_logger(__name__)
+settings = Settings()
+
+
+def get_description() -> str:
+    if settings.info.description_uri:
+        return smart_read(settings.info.description_uri)
+    return DEFAULT_DESCRIPTION
+
 
 app = FastAPI(
-    debug=settings.DEBUG,
-    title=settings.TITLE,
-    contact=settings.CONTACT,
-    description=settings.DESCRIPTION,
+    debug=settings.debug,
+    title=settings.info.title,
+    contact=settings.info.contact.model_dump(),
+    description=get_description(),
     redoc_url="/",
     version=__version__,
 )
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[*settings.ALLOWED_ORIGIN, "http://localhost:3000"],
+    allow_origins=[*settings.allowed_origin, "http://localhost:3000"],
     allow_methods=["OPTIONS", "GET"],
 )
 
-log.info("Ftm store: %s" % FTM_STORE_URI)
+log.info("Ftm store: %s" % settings.store_uri)
 
 
 @app.get(
@@ -78,7 +87,7 @@ def get_authenticated(
 ) -> bool:
     if not api_key:
         return False
-    return secrets.compare_digest(api_key, settings.BUILD_API_KEY)
+    return secrets.compare_digest(api_key, settings.build_api_key)
 
 
 @app.get(

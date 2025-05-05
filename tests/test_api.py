@@ -175,7 +175,6 @@ def test_api_aggregation():
         },
         "total": 34975,
         "query": {
-            "q": None,
             "limit": 100,
             "page": 1,
             "dataset": ["ec_meetings"],

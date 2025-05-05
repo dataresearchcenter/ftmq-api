@@ -10,18 +10,19 @@ from ftmq.types import CE, CEGenerator
 from ftmq.util import get_dehydrated_proxy, get_featured_proxy
 
 from ftmq_api.logging import get_logger
-from ftmq_api.settings import CATALOG, STORE_URI
+from ftmq_api.settings import Settings
 
 if TYPE_CHECKING:
     from ftmq_api.views import RetrieveParams
 
 log = get_logger(__name__)
+settings = Settings()
 
 
 @cache
 def get_catalog() -> Catalog:
-    if CATALOG is not None:
-        return Catalog._from_uri(CATALOG)
+    if settings.catalog is not None:
+        return Catalog._from_uri(settings.catalog)
     return Catalog()
 
 
@@ -39,9 +40,9 @@ def get_store(dataset: str | None = None) -> Store:
     catalog = get_catalog()
     if dataset is not None:
         dataset = get_dataset(dataset)
-        store = _get_store(catalog=catalog, dataset=dataset, uri=STORE_URI)
+        store = _get_store(catalog=catalog, dataset=dataset, uri=settings.store_uri)
     else:
-        store = _get_store(catalog=catalog, uri=STORE_URI)
+        store = _get_store(catalog=catalog, uri=settings.store_uri)
     return store
 
 
@@ -96,4 +97,4 @@ def get_view(dataset: str | None = None) -> View:
 
 # cache at boot time
 catalog = get_catalog()
-Datasets: TypeAlias = Literal[tuple(catalog.names)]
+Datasets: TypeAlias = Literal[tuple(catalog.names or ["default"])]

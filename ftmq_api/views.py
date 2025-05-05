@@ -1,6 +1,8 @@
 from collections.abc import Iterable
+from functools import cache
 
 from anystore.decorators import anycache
+from anystore.store import BaseStore, get_store
 from fastapi import HTTPException
 from fastapi import Query as QueryField
 from fastapi import Request
@@ -12,7 +14,6 @@ from ftmq_search.store import get_store as get_search_store
 from furl import furl
 from normality import slugify
 
-from ftmq_api import settings
 from ftmq_api.query import (
     AggregationParams,
     Query,
@@ -29,13 +30,21 @@ from ftmq_api.serialize import (
     EntitiesResponse,
     EntityResponse,
 )
+from ftmq_api.settings import Settings
 from ftmq_api.store import get_catalog, get_dataset, get_view
+
+settings = Settings()
 
 
 def get_cache_key(request: Request, *args, **kwargs) -> str | None:
-    if not settings.CACHE:
+    if not settings.use_cache:
         return None
-    return f"{settings.CACHE_PREFIX}/{slugify(str(request.url))}"
+    return f"{slugify(str(request.url))}"
+
+
+@cache
+def get_cache() -> BaseStore:
+    return get_store(**settings.cache.model_dump())
 
 
 def get_retrieve_params(
@@ -67,7 +76,7 @@ def get_aggregation_params(
     return AggregationParams(aggSum=aggSum, aggMin=aggMin, aggMax=aggMax, aggAvg=aggAvg)
 
 
-@anycache(key_func=get_cache_key, model=CatalogResponse)
+@anycache(store=get_cache(), key_func=get_cache_key, model=CatalogResponse)
 def dataset_list(request: Request) -> CatalogResponse:
     catalog = get_catalog()
     datasets: list[Dataset] = []
@@ -79,7 +88,7 @@ def dataset_list(request: Request) -> CatalogResponse:
     return CatalogResponse.from_catalog(request, catalog)
 
 
-@anycache(key_func=get_cache_key, model=DatasetResponse)
+@anycache(store=get_cache(), key_func=get_cache_key, model=DatasetResponse)
 def dataset_detail(request: Request, name: str) -> DatasetResponse:
     view = get_view(name)
     dataset = get_dataset(name)
@@ -87,7 +96,7 @@ def dataset_detail(request: Request, name: str) -> DatasetResponse:
     return DatasetResponse.from_dataset(request, dataset)
 
 
-@anycache(key_func=get_cache_key, model=EntitiesResponse)
+@anycache(store=get_cache(), key_func=get_cache_key, model=EntitiesResponse)
 def entity_list(
     request: Request,
     retrieve_params: RetrieveParams,
@@ -109,7 +118,7 @@ def entity_list(
     )
 
 
-@anycache(key_func=get_cache_key, serialization_mode="pickle")
+@anycache(store=get_cache(), key_func=get_cache_key, serialization_mode="pickle")
 def entity_detail(
     request: Request,
     entity_id: str,
@@ -132,7 +141,7 @@ def entity_detail(
     return EntityResponse.from_entity(entity, adjacents)
 
 
-@anycache(key_func=get_cache_key, model=AggregationResponse)
+@anycache(store=get_cache(), key_func=get_cache_key, model=AggregationResponse)
 def aggregation(request: Request) -> AggregationResponse:
     view = get_view()
     params = ViewQueryParams.from_request(request)
@@ -144,11 +153,11 @@ def aggregation(request: Request) -> AggregationResponse:
     )
 
 
-@anycache(key_func=get_cache_key, model=EntitiesResponse)
+@anycache(store=get_cache(), key_func=get_cache_key, model=EntitiesResponse)
 def search(request: Request, authenticated: bool | None = False) -> EntitiesResponse:
     params = SearchQueryParams.from_request(request, authenticated)
     q = params.q
-    if q is None or len(q) < 4:
+    if q is None or len(q) < settings.min_search_length:
         raise HTTPException(400, [f"Invalid search query: `{q}`"])
     params.q = None
     query = SearchQuery.from_params(params)
@@ -161,7 +170,7 @@ def search(request: Request, authenticated: bool | None = False) -> EntitiesResp
     )
 
 
-@anycache(key_func=get_cache_key, model=AutocompleteResponse)
+@anycache(store=get_cache(), key_func=get_cache_key, model=AutocompleteResponse)
 def autocomplete(request, q: str) -> AutocompleteResponse:
     if q is None or len(q) < 4:
         raise HTTPException(400, [f"Invalid search query: `{q}`"])
@@ -169,7 +178,7 @@ def autocomplete(request, q: str) -> AutocompleteResponse:
     return AutocompleteResponse(candidates=store.autocomplete(q))
 
 
-@anycache(key_func=get_cache_key, model=EntitiesResponse)
+@anycache(store=get_cache(), key_func=get_cache_key, model=EntitiesResponse)
 def similar(
     request: Request,
     entity_id: str,

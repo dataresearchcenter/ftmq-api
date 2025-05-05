@@ -8,8 +8,10 @@ from ftmq.query import Query as _Query
 from ftmq.types import Schemata
 from pydantic import BaseModel, ConfigDict, Field
 
-from ftmq_api import settings
+from ftmq_api.settings import Settings
 from ftmq_api.store import Datasets
+
+settings = Settings()
 
 
 class RetrieveParams(BaseModel):
@@ -31,23 +33,15 @@ class AggregationParams(BaseModel):
 class BaseQueryParams(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
 
-    q: Annotated[
-        str | None,
-        FastQuery(
-            description="""Optional search query for name based search
-            (on regular endpoints) or full text search
-            (via ftmq-search) on /search endpoint"""
-        ),
-    ] = None
     dataset: Annotated[
         list[Datasets] | None,
         FastQuery(description="One or more dataset names to limit scope to"),
     ] = []
-    limit: int | None = settings.DEFAULT_LIMIT
+    limit: int | None = settings.default_limit
     page: int | None = 1
     schema_: Schemata | None = Field(
         None,
-        example="LegalEntity",
+        examples=["LegalEntity"],
         alias="schema",
     )
     schema_include_matchable: Annotated[
@@ -66,8 +60,8 @@ class BaseQueryParams(BaseModel):
 
 
 class QueryParams(BaseQueryParams):
-    order_by: str | None = Field(None, example="-date")
-    reverse: str | None = Field(None, example="eu-id-1234")
+    order_by: str | None = Field(None, examples=["-date"])
+    reverse: str | None = Field(None, examples=["eu-id-1234"])
 
 
 META_FIELDS = (
@@ -95,8 +89,8 @@ class ViewQueryParams(QueryParams):
             if listish:
                 params[p] = listish
         params = cls(**params)
-        if not authenticated and params.limit > settings.DEFAULT_LIMIT:
-            params.limit = settings.DEFAULT_LIMIT
+        if not authenticated and params.limit > settings.default_limit:
+            params.limit = settings.default_limit
         return params
 
     def to_aggregator(self) -> Aggregator:
@@ -138,6 +132,14 @@ class Query(_Query):
 class SearchQueryParams(BaseQueryParams):
     model_config = ConfigDict(populate_by_name=True)
 
+    q: Annotated[
+        str | None,
+        FastQuery(
+            description="""Search query for full text search
+            (via ftmq-search) on /search endpoint"""
+        ),
+    ] = None
+
     country: Annotated[
         list[str] | None,
         FastQuery(description="One or more country codes to limit results to"),
@@ -156,8 +158,8 @@ class SearchQueryParams(BaseQueryParams):
             if listish:
                 params[p] = listish
         params = cls(**params)
-        if not authenticated and params.limit > settings.DEFAULT_LIMIT:
-            params.limit = settings.DEFAULT_LIMIT
+        if not authenticated and params.limit > settings.default_limit:
+            params.limit = settings.default_limit
         return params
 
 

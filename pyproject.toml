@@ -49,7 +49,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest_env]
-CATALOG = "./tests/fixtures/catalog.json"
+FTMQ_API_CATALOG = "./tests/fixtures/catalog.json"
 REDIS_DEBUG = 1
-CACHE = 1
-ANYSTORE_URI = "redis://localhost"
+FTMQ_API_USE_CACHE = 1
+FTMQ_API_CACHE__URI = "redis://localhost"
