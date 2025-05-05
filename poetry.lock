@@ -1073,18 +1073,18 @@ sql = ["sqlalchemy (>=2.0.36,<3.0.0)"]
 
 [[package]]
 name = "ftmq-search"
-version = "0.0.2"
+version = "0.0.3"
 description = "followthemoney data search experiments based on ftmq"
 optional = false
 python-versions = "<4,>=3.11"
 groups = ["main"]
 files = [
-    {file = "ftmq_search-0.0.2-py3-none-any.whl", hash = "sha256:6fa2a4792c03eeb2d98653fade2a29ce7e12ff4d0f0065b84fecd5ab0ac67a4c"},
-    {file = "ftmq_search-0.0.2.tar.gz", hash = "sha256:06041a8207ba2edfe7c5031cea49adeab57a4721335e6fa46044f96a2fdd9011"},
+    {file = "ftmq_search-0.0.3-py3-none-any.whl", hash = "sha256:2da314491b1f858d3aa1585718b8950a68e4425b7e7cba57b39b4730594758fa"},
+    {file = "ftmq_search-0.0.3.tar.gz", hash = "sha256:31e280d46591092a281750f33cd1068e4711e92be8e2a17db4f870c00eb1bce9"},
 ]
 
 [package.dependencies]
-ftmq = ">=0.8.1,<0.9.0"
+ftmq = ">=0.8.2,<0.9.0"
 
 [package.extras]
 elasticsearch = ["elasticsearch (>8,<9)"]
@@ -4017,4 +4017,4 @@ propcache = ">=0.2.1"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4"
-content-hash = "28440c64453ff4b4b3864eb0a4303601ac0ced8f36646c5df0511a958bfe15a9"
+content-hash = "3f4fa7777dae0b7f53f1fc9813882fb250ae4f3061c303349fd2ee816c72667a"
