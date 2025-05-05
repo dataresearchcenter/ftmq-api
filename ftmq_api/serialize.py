@@ -11,12 +11,13 @@ from banal import clean_dict
 from fastapi import Request
 from followthemoney.types import registry
 from ftmq.aggregations import AggregatorResult
-from ftmq.model import Catalog, Dataset, DatasetStats
+from ftmq.model import DatasetStats
 from ftmq.types import CE, CEGenerator
+from ftmq_search.model import AutocompleteResult
 from furl import furl
 from pydantic import BaseModel, ConfigDict, Field
 
-from ftmstore_fastapi.query import ViewQueryParams
+from ftmq_api.query import ViewQueryParams
 
 EntityProperties = dict[str, list[Union[str, "EntityResponse"]]]
 Aggregations = dict[str, dict[str, Any]]
@@ -37,9 +38,7 @@ class EntityResponse(BaseModel):
     referents: list[str] = Field([], example=["ofac-1234"])
 
     @classmethod
-    def from_entity(
-        cls, entity: CE, adjacents: Iterable[CE] | None = None
-    ) -> "EntityResponse":
+    def from_entity(cls, entity: CE, adjacents: Iterable[CE] | None = None) -> Self:
         properties = dict(entity.properties)
         if adjacents:
             adjacents = {e.id: EntityResponse.from_entity(e) for e in adjacents}
@@ -64,7 +63,7 @@ EntityResponse.model_rebuild()
 class EntitiesResponse(BaseModel):
     total: int
     items: int
-    stats: DatasetStats
+    stats: DatasetStats | None
     query: ViewQueryParams
     url: str
     next_url: str | None = None
@@ -76,10 +75,11 @@ class EntitiesResponse(BaseModel):
         cls,
         request: Request,
         entities: CEGenerator,
-        stats: DatasetStats,
+        stats: DatasetStats | None = None,
         adjacents: Iterable[CE] | None = None,
         authenticated: bool | None = False,
-    ) -> "EntitiesResponse":
+        count: int = 0,
+    ) -> Self:
         query = ViewQueryParams.from_request(request, authenticated)
         url = furl(str(request.url))
         query_data = clean_dict(query.model_dump())
@@ -87,7 +87,7 @@ class EntitiesResponse(BaseModel):
         url.args.update(query_data)
         entities = [EntityResponse.from_entity(e, adjacents) for e in entities]
         response = cls(
-            total=stats.entity_count,
+            total=stats.entity_count if stats else count,
             items=len(entities),
             query=query,
             entities=entities,
@@ -97,7 +97,7 @@ class EntitiesResponse(BaseModel):
         if query.page > 1:
             url.args["page"] = query.page - 1
             response.prev_url = str(url)
-        if query.limit * query.page < stats.entity_count:
+        if query.limit * query.page < stats.entity_count if stats else count:
             url.args["page"] = query.page + 1
             response.next_url = str(url)
         return response
@@ -139,24 +139,5 @@ class AggregationResponse(BaseModel):
         )
 
 
-class DatasetResponse(Dataset):
-    entities_url: str | None = None
-
-    @classmethod
-    def from_dataset(cls, request: Request, dataset: Dataset) -> Self:
-        return cls(
-            **dataset.model_dump(),
-            entities_url=f"{request.base_url}entities?dataset={dataset.name}",
-        )
-
-
-class CatalogResponse(Catalog):
-    datasets: list[DatasetResponse]
-
-    @classmethod
-    def from_catalog(cls, request: Request, catalog: Catalog) -> Self:
-        return cls(
-            datasets=[
-                DatasetResponse.from_dataset(request, d) for d in catalog.datasets
-            ],
-        )
+class AutocompleteResponse(BaseModel):
+    candidates: list[AutocompleteResult]

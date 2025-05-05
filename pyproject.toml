@@ -1,57 +1,59 @@
-[tool.poetry]
-name = "ftmstore-fastapi"
-version = "2.2.1"
-description = "FastAPI for followthemoney data stores"
-authors = ["Simon Wörpel <simon.woerpel@pm.me>"]
-license = "GNU"
+[project]
+name = "ftmq-api"
+version = "3.0.0"
+description = "FastAPI for FollowTheMoney data stores"
+authors = [{ name = "Simon Wörpel", email = "simon.woerpel@pm.me" }]
+license = "AGPLv3+"
 readme = "README.md"
-packages = [{include = "ftmstore_fastapi"}]
-homepage = "https://github.com/investigativedata/ftmstore_fastapi"
-repository = "https://github.com/investigativedata/ftmstore_fastapi"
-documentation = "https://github.com/investigativedata/ftmstore_fastapi"
 classifiers = [
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+requires-python = ">=3.11,<4"
+dependencies = [
+    "ftmq-search (>=0.0.3,<0.0.4)",
+    "ftmq (>=0.8.2,<0.9.0)",
+    "anystore[redis] (>=0.3.2,<0.4.0)",
+    "fastapi (>=0.115.12,<0.116.0)",
+    "furl (>=2.1.4,<3.0.0)",
 ]
 
-[tool.poetry.urls]
-"Bug Tracker" = "https://github.com/investigativedata/ftmstore_fastapi/issues"
+[project.urls]
+Homepage = "https://github.com/dataresearchcenter/ftmq-api"
+Repository = "https://github.com/dataresearchcenter/ftmq-api"
+Documentation = "https://github.com/dataresearchcenter/ftmq-api"
+Issues = "https://github.com/dataresearchcenter/ftmq-api/issues"
 
-
-[tool.poetry.dependencies]
-python = ">=3.11,<4"
-fastapi = {extras = ["all"], version = "^0.111.0"}
-furl = "^2.1.3"
-pyicu = "^2.13.1"
-ftmq = "^0.6.8"
-structlog = "^24.2.0"
-anystore = {extras = ["redis"], version = "^0.1.6"}
-fakeredis = "^2.23.3"
 
 [tool.poetry.group.dev.dependencies]
-flake8 = "^7.1.0"
-black = "^24.4.2"
-pre-commit = "^3.7.1"
+flake8 = "^7.1.1"
+black = "^24.10.0"
+pre-commit = "^4.0.1"
 ipdb = "^0.13.13"
 isort = "^5.12.0"
-pytest = "^8.2.2"
-pytest-cov = "^5.0.0"
-pytest-env = "^1.1.1"
-mypy = "^1.7.0"
-coverage = "^7.6.0"
+pytest = "^8.3.2"
+pytest-cov = "^6.0.0"
+pytest-env = "^1.1.5"
+mypy = "^1.11.1"
+coverage = "^7.6.8"
 bump2version = "^1.0.1"
+httpx = "^0.28.0"
+uvicorn = "^0.34.2"
+mkdocs-material = "^9.6.12"
+mkdocs-autorefs = "^1.4.1"
+mkdocstrings-python = "^1.16.10"
+mkdocs = "^1.6.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.pytest.ini_options]
-env = [
-    "FTM_STORE_URI=sqlite:///followthemoney.store",
-    "CATALOG=./tests/fixtures/catalog.json",
-    "REDIS_DEBUG=1",
-    "ANYSTORE_URI=redis://localhost"
-]
+[tool.pytest_env]
+FTMQ_API_CATALOG = "./tests/fixtures/catalog.json"
+REDIS_DEBUG = 1
+FTMQ_API_USE_CACHE = 1
+FTMQ_API_CACHE__URI = "redis://localhost"

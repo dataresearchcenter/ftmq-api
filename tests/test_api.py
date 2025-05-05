@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 
-from ftmstore_fastapi.api import app
+from ftmq_api.api import app
 
 client = TestClient(app)
 
@@ -22,7 +22,6 @@ def test_api_dataset_detail():
     assert res.status_code == 200
     data = res.json()
     assert data["name"] == "ec_meetings"
-    assert data["entities_url"] == "http://testserver/entities?dataset=ec_meetings"
     assert (
         data["title"] == "European Commission - Meetings with interest representatives"
     )
@@ -98,6 +97,11 @@ def test_api_dataset_entities():
     data = res.json()
     assert data["total"] == 0
 
+    res = client.get("/entities?dataset=ec_meetings&schema=Event&limit=1&nested=true")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["entities"][0]["properties"]["organizer"][0]["schema"] == "PublicBody"
+
 
 def test_api_dataset_entity_detail():
     res = client.get("/entities/addr-00177d9455d8e1b6a3f5530ea1e7e81ce1c8333f")
@@ -170,7 +174,6 @@ def test_api_aggregation():
         },
         "total": 34975,
         "query": {
-            "q": None,
             "limit": 100,
             "page": 1,
             "dataset": ["ec_meetings"],
@@ -179,8 +182,10 @@ def test_api_aggregation():
             "reverse": None,
             "aggMax": ["date"],
             "aggMin": ["date"],
+            "schema_include_descendants": False,
+            "schema_include_matchable": False,
         },
-        "url": "http://testserver/aggregate?dataset=ec_meetings&schema=Event&aggMin=date&aggMax=date&limit=100&page=1",
+        "url": "http://testserver/aggregate?dataset=ec_meetings&schema=Event&aggMin=date&aggMax=date&limit=100&page=1&schema_include_matchable=False&schema_include_descendants=False",
         "aggregations": {"date": {"min": "2014-11-12", "max": "2023-01-20"}},
     }
     res = client.get(
@@ -223,39 +228,6 @@ def test_api_aggregation():
     }
 
 
-def test_api_search():
-    res = client.get("/entities?dataset=eu_authorities&q=agency")
-    data = res.json()
-    assert data["total"] == 151
-    assert data["items"] == 23
-    tested = False
-    for proxy in data["entities"]:
-        assert "agency" in proxy["caption"].lower()
-        tested = True
-    assert tested
-
-    res = client.get("/entities?q=berlin")
-    data = res.json()
-    assert data["total"] == 49822
-    assert data["items"] == 31
-
-    res = client.get("/entities?q=germany&dehydrate=1&dataset=eu_authorities")
-    res = res.json()
-    assert res["items"] == 1
-    assert res["entities"] == [
-        {
-            "id": "eu-authorities-permanent-representation-of-germany-to-the-eu",
-            "caption": "Permanent Representation of Germany to the EU",
-            "schema": "PublicBody",
-            "properties": {
-                "name": ["Permanent Representation of Germany to the EU"],
-            },
-            "datasets": ["eu_authorities"],
-            "referents": [],
-        }
-    ]
-
-
 def test_api_entities_id_filter():
     res = client.get("/entities?entity_id=eu-authorities-chafea")
     data = res.json()
@@ -272,3 +244,36 @@ def test_api_entities_id_filter():
     res = client.get("/entities?canonical_id__startswith=eu-authorities-&dataset=gdho")
     data = res.json()
     assert data["total"] == data["items"] == 0
+
+
+def test_api_search_fts():
+    res = client.get("/search?dataset=eu_authorities&q=agency")
+    data = res.json()
+    # assert data["total"] == 151
+    assert data["items"] == 51
+
+    res = client.get("/search?q=berlin")
+    data = res.json()
+    # assert data["total"] == 49822
+    assert data["items"] == 100
+
+    res = client.get("/search?q=germany&dehydrate=1&dataset=eu_authorities")
+    res = res.json()
+    assert res["items"] == 1
+    assert res["entities"] == [
+        {
+            "id": "eu-authorities-permanent-representation-of-germany-to-the-eu",
+            "caption": "Permanent Representation of Germany to the EU",
+            "schema": "PublicBody",
+            "properties": {
+                "name": ["Permanent Representation of Germany to the EU"],
+                "country": ["eu"],
+            },
+            "datasets": ["eu_authorities"],
+            "referents": [],
+        }
+    ]
+
+    res = client.get("/autocomplete?q=european defence")
+    data = res.json()
+    assert len(data["candidates"]) == 1

@@ -1,7 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from ftmstore_fastapi.query import Query, ViewQueryParams
+from ftmq_api.query import Query, ViewQueryParams
 
 
 def test_query():

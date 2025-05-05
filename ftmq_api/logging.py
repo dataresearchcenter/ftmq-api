@@ -1,7 +1,7 @@
 import logging
 import sys
 from logging import Filter, LogRecord
-from typing import Any, Dict, List
+from typing import Any
 
 import structlog
 from structlog.contextvars import merge_contextvars
@@ -21,7 +21,7 @@ from structlog.stdlib import (
 )
 from structlog.stdlib import get_logger as get_raw_logger
 
-from . import settings
+from ftmq_api import settings
 
 
 def get_logger(name: str, *args, **kwargs) -> BoundLogger:
@@ -30,7 +30,7 @@ def get_logger(name: str, *args, **kwargs) -> BoundLogger:
 
 def configure_logging(level: int = logging.INFO) -> None:
     """Configure log levels and structured logging"""
-    shared_processors: List[Any] = [
+    shared_processors: list[Any] = [
         add_log_level,
         add_logger_name,
         # structlog.stdlib.PositionalArgumentsFormatter(),
@@ -98,7 +98,7 @@ def configure_logging(level: int = logging.INFO) -> None:
     root_logger.addHandler(error_handler)
 
 
-def format_json(_: Any, __: Any, ed: Dict[str, str]) -> Dict[str, str]:
+def format_json(_: Any, __: Any, ed: dict[str, str]) -> dict[str, str]:
     """Stackdriver uses `message` and `severity` keys to display logs"""
     ed["message"] = ed.pop("event")
     ed["severity"] = ed.pop("level", "info").upper()

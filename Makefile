@@ -1,27 +1,28 @@
 export LOG_LEVEL ?= info
 export COMPOSE ?= docker-compose.yml
-export FTM_STORE_URI = sqlite:///followthemoney.store
+export NOMENKLATURA_DB_URL = sqlite:///nomenklatura.db
 
-api: followthemoney.store
-	CATALOG=./tests/fixtures/catalog.json DEBUG=1 uvicorn ftmstore_fastapi.api:app --reload --port 5000
+api: nomenklatura.db
+	FTMQ_API_CATALOG=./tests/fixtures/catalog.json DEBUG=1 uvicorn ftmq_api.api:app --reload --port 5000
 
-followthemoney.store:
-	poetry run ftmq --store-dataset ec_meetings -i ./tests/fixtures/ec_meetings.ftm.json -o $(FTM_STORE_URI)
-	poetry run ftmq --store-dataset eu_authorities -i ./tests/fixtures/eu_authorities.ftm.json -o $(FTM_STORE_URI)
-	poetry run ftmq --store-dataset gdho -i ./tests/fixtures/gdho.ftm.json -o $(FTM_STORE_URI)
+nomenklatura.db:
+	poetry run ftmq -i ./tests/fixtures/ec_meetings.ftm.json -o $(NOMENKLATURA_DB_URL)
+	poetry run ftmq -i ./tests/fixtures/eu_authorities.ftm.json -o $(NOMENKLATURA_DB_URL)
+	poetry run ftmq -i ./tests/fixtures/gdho.ftm.json -o $(NOMENKLATURA_DB_URL)
+	cat ./tests/fixtures/*.ftm.json | poetry run ftmqs transform | poetry run ftmqs --uri $(NOMENKLATURA_DB_URL) index
 
-test: followthemoney.store
-	poetry run pytest -s --cov=ftmstore_fastapi --cov-report lcov -v
+test: nomenklatura.db
+	poetry run pytest -s --cov=ftmq_api --cov-report lcov -v
 
 typecheck:
 	# pip install types-python-jose
 	# pip install types-passlib
 	# pip install pandas-stubs
-	poetry run mypy ftmstore_fastapi
+	poetry run mypy ftmq_api
 
 lint:
-	poetry run flake8 ftmstore_fastapi --count --select=E9,F63,F7,F82 --show-source --statistics
-	poetry run flake8 ftmstore_fastapi --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+	poetry run flake8 ftmq_api --count --select=E9,F63,F7,F82 --show-source --statistics
+	poetry run flake8 ftmq_api --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
 docker:
 	docker-compose -f $(COMPOSE) up -d
@@ -30,4 +31,8 @@ redis:
 	docker run -p 6379:6379 redis
 
 clean:
-	rm -rf followthemoney.store
+	rm -rf nomenklatura.db
+
+documentation:
+	mkdocs build
+	aws --profile nbg1 --endpoint-url https://s3.investigativedata.org s3 sync ./site s3://docs.investigraph.dev/lib/ftmq-api
