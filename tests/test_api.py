@@ -184,8 +184,10 @@ def test_api_aggregation():
             "reverse": None,
             "aggMax": ["date"],
             "aggMin": ["date"],
+            "schema_include_descendants": False,
+            "schema_include_matchable": False,
         },
-        "url": "http://testserver/aggregate?dataset=ec_meetings&schema=Event&aggMin=date&aggMax=date&limit=100&page=1",
+        "url": "http://testserver/aggregate?dataset=ec_meetings&schema=Event&aggMin=date&aggMax=date&limit=100&page=1&schema_include_matchable=False&schema_include_descendants=False",
         "aggregations": {"date": {"min": "2014-11-12", "max": "2023-01-20"}},
     }
     res = client.get(

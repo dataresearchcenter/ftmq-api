@@ -50,6 +50,14 @@ class BaseQueryParams(BaseModel):
         example="LegalEntity",
         alias="schema",
     )
+    schema_include_matchable: Annotated[
+        bool | None,
+        FastQuery(description="Include matchable schemata for given schema lookup"),
+    ] = False
+    schema_include_descendants: Annotated[
+        bool | None,
+        FastQuery(description="Include schemata descendants for given schema lookup"),
+    ] = False
 
     def to_where_lookup_dict(self) -> dict[str, Any]:
         return {
@@ -108,7 +116,11 @@ class Query(_Query):
         if params.dataset:
             q = q.where(dataset__in=params.dataset)
         if params.schema_:
-            q = q.where(schema=params.schema_)
+            q = q.where(
+                schema=params.schema_,
+                schema_include_descendants=params.schema_include_descendants,
+                schema_include_matchable=params.schema_include_matchable,
+            )
         if params.order_by:
             ascending = True
             if params.order_by.startswith("-"):
@@ -118,8 +130,6 @@ class Query(_Query):
         if params.reverse:
             q = q.where(reverse=params.reverse)
         q = q.where(**params.to_where_lookup_dict())
-        if params.q:
-            q = q.search(params.q)
         aggregator = params.to_aggregator()
         q.aggregations = aggregator.aggregations
         return q
@@ -158,7 +168,11 @@ class SearchQuery(_Query):
         if params.dataset:
             q = q.where(dataset__in=params.dataset)
         if params.schema_:
-            q = q.where(schema=params.schema_)
+            q = q.where(
+                schema=params.schema_,
+                schema_include_matchable=params.schema_include_matchable,
+                schema_include_descendants=params.schema_include_descendants,
+            )
         if params.country:
             q = q.where(country__in=params.country)
         if params.q:
