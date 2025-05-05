@@ -8,13 +8,11 @@ services:
     links:
       - redis
     environment:
-      CATALOG_URI: /data/catalog.json
-      FTM_STORE_URI: sqlite:////data/followthemoney.store
-      REDIS_URL: redis://redis
-      CACHE: 1
-      PRELOAD_DATASETS: 1
+      FTMQ_API_CACHE__URI: redis://redis
+      FTMQ_API_USE_CACHE: true
+
     volumes:
-      - ${DATA_ROOT:-.}/followthemoney.store:/data/followthemoney.store
+      - ${DATA_ROOT:-.}/nomenklatura.db:/data/nomenklatura.db
       - ${DATA_ROOT:-.}/tests/fixtures/catalog.json:/data/catalog.json
 
   redis:
