@@ -22,7 +22,6 @@ def test_api_dataset_detail():
     assert res.status_code == 200
     data = res.json()
     assert data["name"] == "ec_meetings"
-    assert data["entities_url"] == "http://testserver/entities?dataset=ec_meetings"
     assert (
         data["title"] == "European Commission - Meetings with interest representatives"
     )

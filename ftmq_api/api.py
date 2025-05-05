@@ -4,6 +4,7 @@ from anystore.io import smart_read
 from fastapi import Depends, FastAPI, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
+from ftmq.model import Catalog, Dataset
 
 from ftmq_api import __version__, views
 from ftmq_api.logging import get_logger
@@ -11,8 +12,6 @@ from ftmq_api.query import QueryParams, SearchQueryParams
 from ftmq_api.serialize import (
     AggregationResponse,
     AutocompleteResponse,
-    CatalogResponse,
-    DatasetResponse,
     EntitiesResponse,
     EntityResponse,
     ErrorResponse,
@@ -49,12 +48,12 @@ log.info("Ftm store: %s" % settings.store_uri)
 
 @app.get(
     "/catalog",
-    response_model=CatalogResponse,
+    response_model=Catalog,
     responses={
         500: {"model": ErrorResponse, "description": "Server error"},
     },
 )
-async def dataset_list(request: Request) -> CatalogResponse:
+async def dataset_list(request: Request) -> Catalog:
     """
     Show metadata for catalog (as described in
     [nomenklatura.DataCatalog](https://github.com/opensanctions/nomenklatura))
@@ -66,12 +65,12 @@ async def dataset_list(request: Request) -> CatalogResponse:
 
 @app.get(
     "/catalog/{dataset}",
-    response_model=DatasetResponse,
+    response_model=Dataset,
     responses={
         500: {"model": ErrorResponse, "description": "Server error"},
     },
 )
-async def dataset_detail(request: Request, dataset: Datasets) -> DatasetResponse:
+async def dataset_detail(request: Request, dataset: Datasets) -> Dataset:
     """
     Show metadata for given dataset (as described in
     [nomenklatura.Dataset](https://github.com/opensanctions/nomenklatura))

@@ -7,7 +7,7 @@ from fastapi import HTTPException
 from fastapi import Query as QueryField
 from fastapi import Request
 from fastapi.responses import RedirectResponse
-from ftmq.model import Dataset
+from ftmq.model import Catalog, Dataset
 from ftmq.types import CE
 from ftmq.util import get_dehydrated_proxy
 from ftmq_search.store import get_store as get_search_store
@@ -25,8 +25,6 @@ from ftmq_api.query import (
 from ftmq_api.serialize import (
     AggregationResponse,
     AutocompleteResponse,
-    CatalogResponse,
-    DatasetResponse,
     EntitiesResponse,
     EntityResponse,
 )
@@ -76,8 +74,8 @@ def get_aggregation_params(
     return AggregationParams(aggSum=aggSum, aggMin=aggMin, aggMax=aggMax, aggAvg=aggAvg)
 
 
-@anycache(store=get_cache(), key_func=get_cache_key, model=CatalogResponse)
-def dataset_list(request: Request) -> CatalogResponse:
+@anycache(store=get_cache(), key_func=get_cache_key, model=Catalog)
+def dataset_list(request: Request) -> Catalog:
     catalog = get_catalog()
     datasets: list[Dataset] = []
     for dataset in catalog.datasets:
@@ -85,15 +83,15 @@ def dataset_list(request: Request) -> CatalogResponse:
         dataset.apply_stats(view.stats())
         datasets.append(dataset)
     catalog.datasets = datasets
-    return CatalogResponse.from_catalog(request, catalog)
+    return catalog
 
 
-@anycache(store=get_cache(), key_func=get_cache_key, model=DatasetResponse)
-def dataset_detail(request: Request, name: str) -> DatasetResponse:
+@anycache(store=get_cache(), key_func=get_cache_key, model=Dataset)
+def dataset_detail(request: Request, name: str) -> Dataset:
     view = get_view(name)
     dataset = get_dataset(name)
     dataset.apply_stats(view.stats())
-    return DatasetResponse.from_dataset(request, dataset)
+    return dataset
 
 
 @anycache(store=get_cache(), key_func=get_cache_key, model=EntitiesResponse)
