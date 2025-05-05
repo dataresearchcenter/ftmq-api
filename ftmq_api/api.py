@@ -240,3 +240,22 @@ async def autocomplete(request: Request, q: str) -> AutocompleteResponse:
     Simple autocomplete by names
     """
     return views.autocomplete(request, q)
+
+
+@app.get(
+    "/similar",
+    response_model=EntitiesResponse,
+    responses={
+        500: {"model": ErrorResponse, "description": "Server error"},
+    },
+)
+async def similar(
+    request: Request,
+    id: str,
+    retrieve_params: views.RetrieveParams = Depends(views.get_retrieve_params),
+    authenticated: bool = Depends(get_authenticated),
+) -> EntitiesResponse:
+    """
+    Get similar entities based on `id`
+    """
+    return views.similar(request, id, retrieve_params, authenticated)

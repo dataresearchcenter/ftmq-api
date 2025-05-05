@@ -167,3 +167,19 @@ def autocomplete(request, q: str) -> AutocompleteResponse:
         raise HTTPException(400, [f"Invalid search query: `{q}`"])
     store = get_search_store()
     return AutocompleteResponse(candidates=store.autocomplete(q))
+
+
+@anycache(key_func=get_cache_key, model=EntitiesResponse)
+def similar(
+    request: Request,
+    entity_id: str,
+    retrieve_params: RetrieveParams,
+    authenticated: bool | None = False,
+) -> EntitiesResponse:
+    view = get_view()
+    entities = [e[0] for e in view.similar(entity_id, retrieve_params)]
+    return EntitiesResponse.from_view(
+        request=request,
+        entities=entities,
+        authenticated=authenticated,
+    )
