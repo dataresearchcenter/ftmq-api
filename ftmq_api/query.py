@@ -19,6 +19,7 @@ class RetrieveParams(BaseModel):
     featured: bool
     dehydrate: bool
     dehydrate_nested: bool
+    stats: bool
 
 
 class AggregationParams(BaseModel):

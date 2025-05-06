@@ -57,12 +57,14 @@ def get_retrieve_params(
         False, description="Only include id, schema and caption"
     ),
     dehydrate_nested: bool = QueryField(True, description="Dehydrate nested entities"),
+    stats: bool = QueryField(False, description="Include statistics in response"),
 ) -> RetrieveParams:
     return RetrieveParams(
         nested=nested,
         featured=featured,
         dehydrate=dehydrate,
         dehydrate_nested=dehydrate_nested,
+        stats=stats,
     )
 
 
@@ -112,8 +114,9 @@ def entity_list(
         request=request,
         entities=entities,
         adjacents=adjacents,
-        stats=view.stats(query),
+        stats=view.stats(query) if retrieve_params.stats else None,
         authenticated=authenticated,
+        count=view.count(query) if not retrieve_params.stats else None,
     )
 
 
