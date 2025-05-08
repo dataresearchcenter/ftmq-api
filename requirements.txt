@@ -144,9 +144,9 @@ azure-identity==1.19.0 ; python_version >= "3.11" and python_version < "4" \
 azure-storage-blob==12.23.1 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:1c2238aa841d1545f42714a5017c010366137a44a0605da2d45f770174bfc6b4 \
     --hash=sha256:a587e54d4e39d2a27bd75109db164ffa2058fe194061e5446c5a89bca918272f
-babel==2.16.0 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:368b5b98b37c06b7daf6696391c3240c938b37767d4584413e8438c5c435fa8b \
-    --hash=sha256:d1f3554ca26605fe173f3de0c65f750f5a42f924499bf134de6423582298e316
+babel==2.17.0 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:0c54cffb19f690cdcc52a3b50bcbf71e07a808d1c80d549f2459b9d2cf0afb9d \
+    --hash=sha256:4d0b53093fdfb4b21c92b5213dba5a1b23885afa8383709427046b21c366e5f2
 banal==1.0.6 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:2fe02c9305f53168441948f4a03dfbfa2eacc73db30db4a93309083cb0e250a5 \
     --hash=sha256:877aacb16b17f8fa4fd29a7c44515c5a23dc1a7b26078bc41dd34829117d85e1
