@@ -1615,8 +1615,8 @@ pyflakes==3.2.0 ; python_version >= "3.11" and python_version < "4" \
 pygments==2.18.0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:786ff802f32e91311bff3889f6e9a86e81505fe99f2735bb6d60ae0c5004f199 \
     --hash=sha256:b8e6aca0523f3ab76fee51799c488e38782ac06eafcf95e7ba832985c8e7b13a
-pyicu==2.14 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:acc7eb92bd5c554ed577249c6978450a4feda0aa6f01470152b3a7b382a02132
+pyicu==2.15.2 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:561e77eedff17cec6839f26211f7a5ce3c071b776e8a0ec9d1207f46cbce598f
 pyjwt[crypto]==2.9.0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:3b02fb0f44517787776cf48f2ae25d8e14f300e6d7545a4315cee571a415e850 \
     --hash=sha256:7e1e5b56cc735432a7369cbfa0efe50fa113ebecdc04ae6922deba8b84582d0c
