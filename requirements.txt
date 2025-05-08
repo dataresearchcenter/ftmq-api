@@ -126,9 +126,9 @@ asttokens==2.4.1 ; python_version >= "3.11" and python_version < "4" \
 async-timeout==5.0.1 ; python_version >= "3.11" and python_full_version < "3.11.3" \
     --hash=sha256:39e3809566ff85354557ec2398b55e096c8364bacac9405a7a1fa429e77fe76c \
     --hash=sha256:d9321a7a3d5a6a5e187e824d2fa0793ce379a202935782d555d6e9d2735677d3
-asyncssh==2.18.0 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:1a322161c01f60b9719dc8f39f80db71e61f3f5e04abbc3420ce503126d87123 \
-    --hash=sha256:ee09081200753eca137c893995ce3b95f8e157945aa8bda455ea810b30762d96
+asyncssh==2.21.0 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:450fe13bb8d86a8f4e7d7b5fafce7791181ca3e7c92e15bbc45dfb25866e48b3 \
+    --hash=sha256:cf7f3dfa52b2cb4ad31f0d77ff0d0a8fdd850203da84a0e72e62c36fdd4daf4b
 attrs==24.2.0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:5cfb1b9148b5b086569baec03f20d7b6bf3bcacc9a42bebf87ffaaca362f6346 \
     --hash=sha256:81921eb96de3191c8258c199618104dd27ac608d9366f5e35d011eae1867ede2
