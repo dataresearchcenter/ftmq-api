@@ -229,14 +229,14 @@ trio = ["trio (>=0.26.1)"]
 
 [[package]]
 name = "anystore"
-version = "0.3.2"
+version = "0.3.3"
 description = "Store and cache things anywhere"
 optional = false
 python-versions = "<4,>=3.11"
 groups = ["main"]
 files = [
-    {file = "anystore-0.3.2-py3-none-any.whl", hash = "sha256:ecc99cd1aa0e0a6c08deb8eb89f56ea7733a13ac3bb2d52261a22c76a679dafe"},
-    {file = "anystore-0.3.2.tar.gz", hash = "sha256:9b0a914e088130003f7cf715d9e226ada9785ff4940b240426a2e1d7fface289"},
+    {file = "anystore-0.3.3-py3-none-any.whl", hash = "sha256:c516e2f3eb4e8babca3b5c07a4cc2dce918a6f4d087d84c30f4035c5363c041b"},
+    {file = "anystore-0.3.3.tar.gz", hash = "sha256:589ca01c46d044de438e7c96934d99ed08a87b39f85d5894a6e3cec867ddf367"},
 ]
 
 [package.dependencies]
@@ -1064,19 +1064,19 @@ tqdm = ["tqdm"]
 
 [[package]]
 name = "ftmq"
-version = "0.8.2"
+version = "0.8.3"
 description = "followthemoney query dsl and io helpers"
 optional = false
 python-versions = "<4,>=3.11"
 groups = ["main"]
 files = [
-    {file = "ftmq-0.8.2-py3-none-any.whl", hash = "sha256:5d8715799a67fdebd986a8e9703f43002e1b1a7fda7a6298ff51b36e8ccbddc2"},
-    {file = "ftmq-0.8.2.tar.gz", hash = "sha256:4f48891ae9e1a7ae5def11710204e2eae1501998582714ae78fb8d5d5dbf78b7"},
+    {file = "ftmq-0.8.3-py3-none-any.whl", hash = "sha256:389cf11f486a0255f6a600f59d7b84bd43d8e97e62a88390c428379afd94a180"},
+    {file = "ftmq-0.8.3.tar.gz", hash = "sha256:f14fe1c00491ab35824dccb32ccb00b045f883b2098694c9070a82a30b6b802e"},
 ]
 
 [package.dependencies]
 alephclient = ">=2.6.0,<3.0.0"
-anystore = ">=0.3.2,<0.4.0"
+anystore = ">=0.3.3,<0.4.0"
 click = ">=8.1.8,<9.0.0"
 click-default-group = ">=1.2.4,<2.0.0"
 nomenklatura = ">=3.17.3,<4.0.0"
@@ -4375,4 +4375,4 @@ propcache = ">=0.2.1"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4"
-content-hash = "af8648328427bccf1279f07b302726c9e115adf6b7ad054488ffe0187186c2b1"
+content-hash = "1c358765af452aca53f328d7273860ab0ee90e1ad821ea25adc5b62a31b5a084"
