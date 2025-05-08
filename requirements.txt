@@ -1943,9 +1943,9 @@ threadpoolctl==3.5.0 ; python_version >= "3.11" and python_version < "4" \
 traitlets==5.14.3 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:9ed0579d3502c94b4b3732ac120375cda96f923114522847de4b3bb98b96b6b7 \
     --hash=sha256:b74e89e397b1ed28cc831db7aea759ba6640cb3de13090ca145426688ff1ac4f
-typer==0.12.5 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:62fe4e471711b147e3365034133904df3e235698399bc4de2b36c8579298d52b \
-    --hash=sha256:f592f089bedcc8ec1b974125d64851029c3b1af145f04aca64d69410f0c9b722
+typer==0.15.3 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:818873625d0569653438316567861899f7e9972f2e6e0c16dab608345ced713c \
+    --hash=sha256:c86a65ad77ca531f03de08d1b9cb67cd09ad02ddddf4b34745b5008f43b239bd
 types-pyyaml==6.0.12.20240917 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:392b267f1c0fe6022952462bf5d6523f31e37f6cea49b14cee7ad634b6301570 \
     --hash=sha256:d1405a86f9576682234ef83bcb4e6fff7c9305c8b1fbad5e0bcd4f7dbdc9c587
