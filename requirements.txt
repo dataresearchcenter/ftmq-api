@@ -1617,9 +1617,9 @@ pygments==2.18.0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:b8e6aca0523f3ab76fee51799c488e38782ac06eafcf95e7ba832985c8e7b13a
 pyicu==2.14 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:acc7eb92bd5c554ed577249c6978450a4feda0aa6f01470152b3a7b382a02132
-pyjwt[crypto]==2.9.0 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:3b02fb0f44517787776cf48f2ae25d8e14f300e6d7545a4315cee571a415e850 \
-    --hash=sha256:7e1e5b56cc735432a7369cbfa0efe50fa113ebecdc04ae6922deba8b84582d0c
+pyjwt[crypto]==2.10.1 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:3cc5772eb20009233caf06e9d8a0577824723b44e6648ee0a2aedb6cf9381953 \
+    --hash=sha256:dcdd193e30abefd5debf142f9adfcdd2b58004e644f25406ffaebd50bd98dacb
 pyparsing==3.2.0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:93d9577b88da0bbea8cc8334ee8b918ed014968fd2ec383e868fb8afb1ccef84 \
     --hash=sha256:cbf74e27246d595d9a74b186b810f6fbb86726dbf3b9532efb343f6d7294fe9c
