@@ -660,9 +660,9 @@ frozenlist==1.5.0 ; python_version >= "3.11" and python_version < "4" \
 fsspec==2024.10.0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:03b9a6785766a4de40368b88906366755e2819e758b83705c88cd7cb5fe81871 \
     --hash=sha256:eda2d8a4116d4f2429db8550f2457da57279247dd930bb12f821b58391359493
-ftmq-search==0.0.1 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:b3cb4c5f9babdb91ec517eba27b09f9eb51f50f6817ffc1d46f62a14dbb90672 \
-    --hash=sha256:ef4b7d684145364a3eacd21a93e4ae8541821f39f0d3141b1f9627148689edab
+ftmq-search==0.0.4 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:911c40edbd11e0203d143e2ae337bd20f54a105f1acff19b309ad94be05bf525 \
+    --hash=sha256:f6e94d9bf3925d7869226a1e5418154ca33b5eafcb49aabc73bc8ffb9d640a55
 ftmq==0.6.14 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:58b7c343ece2de3e41cc9f5b74a1d4964646b7c67599d7ad8a3247831239403a \
     --hash=sha256:c18f7c75faefaec6091f9338c577092d9ea4d239022d62f5b935dede42e2a6f6
