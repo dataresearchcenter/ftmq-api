@@ -57,4 +57,4 @@ build-backend = "poetry.core.masonry.api"
 FTMQ_API_CATALOG = "./tests/fixtures/catalog.json"
 REDIS_DEBUG = 1
 FTMQ_API_USE_CACHE = 1
-FTMQ_API_CACHE__URI = "redis://localhost"
+FTMQ_API_CACHE_URI = "redis://localhost"
