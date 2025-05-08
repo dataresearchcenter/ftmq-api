@@ -1609,9 +1609,9 @@ pydantic-settings==2.6.1 ; python_version >= "3.11" and python_version < "4" \
 pydantic==2.9.2 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:d155cef71265d1e9807ed1c32b4c8deec042a44a50a4188b25ac67ecd81a9c0f \
     --hash=sha256:f048cec7b26778210e28a0459867920654d48e5e62db0958433636cde4254f12
-pyflakes==3.2.0 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:1c61603ff154621fb2a9172037d84dca3500def8c8b630657d1701f026f8af3f \
-    --hash=sha256:84b5be138a2dfbb40689ca07e2152deb896a65c3a3e24c251c5c62489568074a
+pyflakes==3.3.2 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:5039c8339cbb1944045f4ee5466908906180f13cc99cc9949348d10f82a5c32a \
+    --hash=sha256:6dfd61d87b97fba5dcfaaf781171ac16be16453be6d816147989e7f6e6a9576b
 pygments==2.18.0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:786ff802f32e91311bff3889f6e9a86e81505fe99f2735bb6d60ae0c5004f199 \
     --hash=sha256:b8e6aca0523f3ab76fee51799c488e38782ac06eafcf95e7ba832985c8e7b13a
