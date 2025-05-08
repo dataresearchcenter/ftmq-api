@@ -1635,9 +1635,9 @@ pytest==8.3.3 ; python_version >= "3.11" and python_version < "4" \
 python-dateutil==2.9.0.post0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3 \
     --hash=sha256:a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427
-python-dotenv==1.0.1 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:e324ee90a023d808f1959c46bcbc04446a10ced277783dc6ee09987c37ec10ca \
-    --hash=sha256:f7b63ef50f1b690dddf550d03497b66d609393b40b564ed0d674909a68ebf16a
+python-dotenv==1.1.0 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:41f90bc6f5f177fb41f53e87666db362025010eb28f60a01c9143bfa33a2b2d5 \
+    --hash=sha256:d7c01d9e2293916c18baf562d95698754b0dbbb5e74d457c45d4f6561fb9d55d
 python-stdnum==1.20 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:111008e10391d54fb2afad2a10df70d5cb0c6c0a7ec82fec6f022cb8712961d3 \
     --hash=sha256:ad2a2cf2eb025de408210235f36b4ae31252de3186240ccaa8126e117cb82690
