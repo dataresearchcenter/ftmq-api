@@ -546,9 +546,9 @@ et-xmlfile==2.0.0 ; python_version >= "3.11" and python_version < "4" \
 executing==2.1.0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:8d63781349375b5ebccc3142f4b30350c0cd9c79f921cde38be2be4637e98eaf \
     --hash=sha256:8ea27ddd260da8150fa5a708269c4a10e76161e2496ec3e587da9e3c0fe4b9ab
-fakeredis==2.26.1 ; python_version >= "3.11" and python_version < "4.0" \
-    --hash=sha256:68a5615d7ef2529094d6958677e30a6d30d544e203a5ab852985c19d7ad57e32 \
-    --hash=sha256:69f4daafe763c8014a6dbf44a17559c46643c95447b3594b3975251a171b806d
+fakeredis==2.29.0 ; python_version >= "3.11" and python_version < "4.0" \
+    --hash=sha256:159cebf2c53e2c2bd7d18220fa93aa5f1d7152f6b6dd7896c46234d674342398 \
+    --hash=sha256:f644c0a69dc088455d75a9b259d101e28a1c5659381aa6d9ee6c2b31eb5a909f
 fastapi==0.115.5 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:0e7a4d0dc0d01c68df21887cce0945e72d3c48b9f4f79dfe7a7d53aa08fbb289 \
     --hash=sha256:596b95adbe1474da47049e802f9a65ab2ffa9c2b07e7efee70eb8a66c9f2f796
