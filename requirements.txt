@@ -182,9 +182,9 @@ bump2version==1.0.1 ; python_version >= "3.11" and python_version < "4" \
 cachetools==5.5.0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:02134e8439cdc2ffb62023ce1debca2944c3f289d66bb17ead3ab3dede74b292 \
     --hash=sha256:2cc24fb4cbe39633fb7badd9db9ca6295d766d9c2995f245725a46715d050f2a
-certifi==2024.8.30 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:922820b53db7a7257ffbda3f597266d435245903d80737e34f8a45ff3e3230d8 \
-    --hash=sha256:bec941d2aa8195e248a60b31ff9f0558284cf01a52591ceda73ea9afffd69fd9
+certifi==2025.4.26 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:0a816057ea3cdefcef70270d2c515e4506bbc954f417fa5ade2021213bb8f0c6 \
+    --hash=sha256:30350364dfe371162649852c63336a15c70c6510c2ad5015b21c2345311805f3
 cffi==1.17.1 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:045d61c734659cc045141be4bae381a41d89b741f795af1dd018bfb532fd0df8 \
     --hash=sha256:0984a4925a435b1da406122d4d7968dd861c1385afe3b45ba82b750f229811e2 \
