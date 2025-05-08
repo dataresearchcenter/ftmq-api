@@ -1923,9 +1923,9 @@ sshfs==2024.9.0 ; python_version >= "3.11" and python_version < "4" \
 stack-data==0.6.3 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:836a778de4fec4dcd1dcd89ed8abff8a221f58308462e1c4aa2a3cf30148f0b9 \
     --hash=sha256:d5558e0c25a4cb0853cddad3d77da9891a08cb85dd9f9f91b9f8cd66e511e695
-starlette==0.41.2 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:9834fd799d1a87fd346deb76158668cfa0b0d56f85caefe8268e2d97c3468b62 \
-    --hash=sha256:fbc189474b4731cf30fcef52f18a8d070e3f3b46c6a04c97579e85e6ffca942d
+starlette==0.46.2 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:595633ce89f8ffa71a015caed34a5b2dc1c0cdb3f0f1fbd1e69339cf2abeec35 \
+    --hash=sha256:7f7361f34eed179294600af672f565727419830b54b7b084efe44bb82d2fccd5
 stringcase==1.2.0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:48a06980661908efe8d9d34eab2b6c13aefa2163b3ced26972902e3bdfd87008
 structlog==24.4.0 ; python_version >= "3.11" and python_version < "4" \
