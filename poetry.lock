@@ -1092,22 +1092,22 @@ sql = ["sqlalchemy (>=2.0.36,<3.0.0)"]
 
 [[package]]
 name = "ftmq-search"
-version = "0.0.3"
+version = "0.0.4"
 description = "followthemoney data search experiments based on ftmq"
 optional = false
 python-versions = "<4,>=3.11"
 groups = ["main"]
 files = [
-    {file = "ftmq_search-0.0.3-py3-none-any.whl", hash = "sha256:2da314491b1f858d3aa1585718b8950a68e4425b7e7cba57b39b4730594758fa"},
-    {file = "ftmq_search-0.0.3.tar.gz", hash = "sha256:31e280d46591092a281750f33cd1068e4711e92be8e2a17db4f870c00eb1bce9"},
+    {file = "ftmq_search-0.0.4-py3-none-any.whl", hash = "sha256:911c40edbd11e0203d143e2ae337bd20f54a105f1acff19b309ad94be05bf525"},
+    {file = "ftmq_search-0.0.4.tar.gz", hash = "sha256:f6e94d9bf3925d7869226a1e5418154ca33b5eafcb49aabc73bc8ffb9d640a55"},
 ]
 
 [package.dependencies]
-ftmq = ">=0.8.2,<0.9.0"
+ftmq = ">=0.8.3,<0.9.0"
 
 [package.extras]
 elasticsearch = ["elasticsearch (>8,<9)"]
-tantivy = ["tantivy (>=0.22.0,<0.23.0)"]
+tantivy = ["tantivy (>=0.24.0,<0.25.0)"]
 
 [[package]]
 name = "furl"
@@ -4375,4 +4375,4 @@ propcache = ">=0.2.1"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4"
-content-hash = "1c358765af452aca53f328d7273860ab0ee90e1ad821ea25adc5b62a31b5a084"
+content-hash = "cf94fe061d8a55732b37e683bc784248156aeec78551518b2e3bbe3d2a1f63df"

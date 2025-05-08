@@ -15,7 +15,7 @@ classifiers = [
 ]
 requires-python = ">=3.11,<4"
 dependencies = [
-    "ftmq-search (>=0.0.3,<0.0.4)",
+    "ftmq-search (>=0.0.4,<0.0.5)",
     "ftmq (>=0.8.3,<0.9.0)",
     "anystore[redis] (>=0.3.2,<0.4.0)",
     "fastapi (>=0.115.12,<0.116.0)",
