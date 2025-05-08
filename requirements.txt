@@ -1806,9 +1806,9 @@ rapidfuzz==3.10.1 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:f98f36c6a1bb9a6c8bbec99ad87c8c0e364f34761739b5ea9adf7b48129ae8cf \
     --hash=sha256:fc22d69a1c9cccd560a5c434c0371b2df0f47c309c635a01a913e03bbf183710 \
     --hash=sha256:fe07f8b9c3bb5c5ad1d2c66884253e03800f4189a60eb6acd6119ebaf3eb9894
-rdflib==7.0.0 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:0438920912a642c866a513de6fe8a0001bd86ef975057d6962c79ce4771687cd \
-    --hash=sha256:9995eb8569428059b8c1affd26b25eac510d64f5043d9ce8c84e0d0036e995ae
+rdflib==7.1.4 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:72f4adb1990fa5241abd22ddaf36d7cafa5d91d9ff2ba13f3086d339b213d997 \
+    --hash=sha256:fed46e24f26a788e2ab8e445f7077f00edcf95abb73bcef4b86cefa8b62dd174
 redis==5.2.0 ; python_version >= "3.11" and python_version < "4.0" \
     --hash=sha256:0b1087665a771b1ff2e003aa5bdd354f15a70c9e25d5a7dbf9c722c16528a7b0 \
     --hash=sha256:ae174f2bb3b1bf2b09d54bf3e51fbc1469cf6c10aa03e21141f51969801a7897
