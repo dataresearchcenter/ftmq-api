@@ -66,6 +66,7 @@ class View:
         self.view = self.store.default_view()
 
         self.stats = self.query.stats
+        self.count = self.query.count
         self.aggregations = self.query.aggregations
         self.get_adjacents = self.query.get_adjacents
 

@@ -3,6 +3,7 @@ from functools import cache
 
 from anystore.decorators import anycache
 from anystore.store import BaseStore, get_store
+from anystore.util import make_data_checksum
 from fastapi import HTTPException
 from fastapi import Query as QueryField
 from fastapi import Request
@@ -12,7 +13,6 @@ from ftmq.types import CE
 from ftmq.util import get_dehydrated_proxy
 from ftmq_search.store import get_store as get_search_store
 from furl import furl
-from normality import slugify
 
 from ftmq_api.query import (
     AggregationParams,
@@ -37,7 +37,8 @@ settings = Settings()
 def get_cache_key(request: Request, *args, **kwargs) -> str | None:
     if not settings.use_cache:
         return None
-    return f"{slugify(str(request.url))}"
+    f = furl(str(request.url))
+    return f"{f.host}{f.path}/{make_data_checksum(f.querystr)}"
 
 
 @cache
@@ -56,12 +57,14 @@ def get_retrieve_params(
         False, description="Only include id, schema and caption"
     ),
     dehydrate_nested: bool = QueryField(True, description="Dehydrate nested entities"),
+    stats: bool = QueryField(False, description="Include statistics in response"),
 ) -> RetrieveParams:
     return RetrieveParams(
         nested=nested,
         featured=featured,
         dehydrate=dehydrate,
         dehydrate_nested=dehydrate_nested,
+        stats=stats,
     )
 
 
@@ -111,8 +114,9 @@ def entity_list(
         request=request,
         entities=entities,
         adjacents=adjacents,
-        stats=view.stats(query),
+        stats=view.stats(query) if retrieve_params.stats else None,
         authenticated=authenticated,
+        count=view.count(query) if not retrieve_params.stats else None,
     )
 
 

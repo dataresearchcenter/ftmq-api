@@ -56,6 +56,6 @@ In 2023, developing of this project was supported by [Media Tech Lab Bayern batc
 
 `ftmq-api` is licensed under the AGPLv3 or later license.
 
-Prior to version 3.0.0, `ftmq-api` was released under the MIT license and was called `ftmstore-fastapi`.
+Prior to version 3.0.0, `ftmq-api` was released under the GPL-3.0 license and was called `ftmstore-fastapi`.
 
 see [NOTICE](./NOTICE) and [LICENSE](./LICENSE)

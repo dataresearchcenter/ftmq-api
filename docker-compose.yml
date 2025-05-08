@@ -8,7 +8,7 @@ services:
     links:
       - redis
     environment:
-      FTMQ_API_CACHE__URI: redis://redis
+      FTMQ_API_CACHE_URI: redis://redis
       FTMQ_API_USE_CACHE: true
 
     volumes:

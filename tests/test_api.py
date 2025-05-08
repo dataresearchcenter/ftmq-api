@@ -56,6 +56,14 @@ def test_api_entities():
     data = res.json()
     assert data["total"] == combined
     assert data["items"] == 100
+    assert data["stats"] is None
+
+    res = client.get("/entities?dataset=gdho&dataset=eu_authorities&stats=1")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["total"] == combined
+    assert data["items"] == 100
+    assert data["stats"]["entity_count"] == combined
 
 
 def test_api_dataset_entities():

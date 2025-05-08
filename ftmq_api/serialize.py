@@ -86,8 +86,9 @@ class EntitiesResponse(BaseModel):
         query_data.pop("schema_", None)
         url.args.update(query_data)
         entities = [EntityResponse.from_entity(e, adjacents) for e in entities]
+        count = stats.entity_count if stats else count
         response = cls(
-            total=stats.entity_count if stats else count,
+            total=count,
             items=len(entities),
             query=query,
             entities=entities,
@@ -97,7 +98,7 @@ class EntitiesResponse(BaseModel):
         if query.page > 1:
             url.args["page"] = query.page - 1
             response.prev_url = str(url)
-        if query.limit * query.page < stats.entity_count if stats else count:
+        if query.limit * query.page < count:
             url.args["page"] = query.page + 1
             response.next_url = str(url)
         return response

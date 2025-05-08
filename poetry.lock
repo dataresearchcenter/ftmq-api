@@ -229,14 +229,14 @@ trio = ["trio (>=0.26.1)"]
 
 [[package]]
 name = "anystore"
-version = "0.3.2"
+version = "0.3.3"
 description = "Store and cache things anywhere"
 optional = false
 python-versions = "<4,>=3.11"
 groups = ["main"]
 files = [
-    {file = "anystore-0.3.2-py3-none-any.whl", hash = "sha256:ecc99cd1aa0e0a6c08deb8eb89f56ea7733a13ac3bb2d52261a22c76a679dafe"},
-    {file = "anystore-0.3.2.tar.gz", hash = "sha256:9b0a914e088130003f7cf715d9e226ada9785ff4940b240426a2e1d7fface289"},
+    {file = "anystore-0.3.3-py3-none-any.whl", hash = "sha256:c516e2f3eb4e8babca3b5c07a4cc2dce918a6f4d087d84c30f4035c5363c041b"},
+    {file = "anystore-0.3.3.tar.gz", hash = "sha256:589ca01c46d044de438e7c96934d99ed08a87b39f85d5894a6e3cec867ddf367"},
 ]
 
 [package.dependencies]
@@ -778,14 +778,14 @@ tests = ["asttokens (>=2.1.0)", "coverage", "coverage-enable-subprocess", "ipyth
 
 [[package]]
 name = "fakeredis"
-version = "2.28.1"
+version = "2.29.0"
 description = "Python implementation of redis API, can be used for testing purposes."
 optional = false
 python-versions = "<4.0,>=3.7"
 groups = ["main"]
 files = [
-    {file = "fakeredis-2.28.1-py3-none-any.whl", hash = "sha256:38c7c17fba5d5522af9d980a8f74a4da9900a3441e8f25c0fe93ea4205d695d1"},
-    {file = "fakeredis-2.28.1.tar.gz", hash = "sha256:5e542200b945aa0a7afdc0396efefe3cdabab61bc0f41736cc45f68960255964"},
+    {file = "fakeredis-2.29.0-py3-none-any.whl", hash = "sha256:f644c0a69dc088455d75a9b259d101e28a1c5659381aa6d9ee6c2b31eb5a909f"},
+    {file = "fakeredis-2.29.0.tar.gz", hash = "sha256:159cebf2c53e2c2bd7d18220fa93aa5f1d7152f6b6dd7896c46234d674342398"},
 ]
 
 [package.dependencies]
@@ -1064,19 +1064,19 @@ tqdm = ["tqdm"]
 
 [[package]]
 name = "ftmq"
-version = "0.8.2"
+version = "0.8.3"
 description = "followthemoney query dsl and io helpers"
 optional = false
 python-versions = "<4,>=3.11"
 groups = ["main"]
 files = [
-    {file = "ftmq-0.8.2-py3-none-any.whl", hash = "sha256:5d8715799a67fdebd986a8e9703f43002e1b1a7fda7a6298ff51b36e8ccbddc2"},
-    {file = "ftmq-0.8.2.tar.gz", hash = "sha256:4f48891ae9e1a7ae5def11710204e2eae1501998582714ae78fb8d5d5dbf78b7"},
+    {file = "ftmq-0.8.3-py3-none-any.whl", hash = "sha256:389cf11f486a0255f6a600f59d7b84bd43d8e97e62a88390c428379afd94a180"},
+    {file = "ftmq-0.8.3.tar.gz", hash = "sha256:f14fe1c00491ab35824dccb32ccb00b045f883b2098694c9070a82a30b6b802e"},
 ]
 
 [package.dependencies]
 alephclient = ">=2.6.0,<3.0.0"
-anystore = ">=0.3.2,<0.4.0"
+anystore = ">=0.3.3,<0.4.0"
 click = ">=8.1.8,<9.0.0"
 click-default-group = ">=1.2.4,<2.0.0"
 nomenklatura = ">=3.17.3,<4.0.0"
@@ -1092,22 +1092,22 @@ sql = ["sqlalchemy (>=2.0.36,<3.0.0)"]
 
 [[package]]
 name = "ftmq-search"
-version = "0.0.3"
+version = "0.0.4"
 description = "followthemoney data search experiments based on ftmq"
 optional = false
 python-versions = "<4,>=3.11"
 groups = ["main"]
 files = [
-    {file = "ftmq_search-0.0.3-py3-none-any.whl", hash = "sha256:2da314491b1f858d3aa1585718b8950a68e4425b7e7cba57b39b4730594758fa"},
-    {file = "ftmq_search-0.0.3.tar.gz", hash = "sha256:31e280d46591092a281750f33cd1068e4711e92be8e2a17db4f870c00eb1bce9"},
+    {file = "ftmq_search-0.0.4-py3-none-any.whl", hash = "sha256:911c40edbd11e0203d143e2ae337bd20f54a105f1acff19b309ad94be05bf525"},
+    {file = "ftmq_search-0.0.4.tar.gz", hash = "sha256:f6e94d9bf3925d7869226a1e5418154ca33b5eafcb49aabc73bc8ffb9d640a55"},
 ]
 
 [package.dependencies]
-ftmq = ">=0.8.2,<0.9.0"
+ftmq = ">=0.8.3,<0.9.0"
 
 [package.extras]
 elasticsearch = ["elasticsearch (>8,<9)"]
-tantivy = ["tantivy (>=0.22.0,<0.23.0)"]
+tantivy = ["tantivy (>=0.24.0,<0.25.0)"]
 
 [[package]]
 name = "furl"
@@ -2569,26 +2569,26 @@ ptyprocess = ">=0.5"
 
 [[package]]
 name = "phonenumbers"
-version = "9.0.4"
+version = "9.0.5"
 description = "Python version of Google's common library for parsing, formatting, storing and validating international phone numbers."
 optional = false
 python-versions = "*"
 groups = ["main"]
 files = [
-    {file = "phonenumbers-9.0.4-py2.py3-none-any.whl", hash = "sha256:ac8aa9d4679da5078547aeb159d78c2b60f8d0fb4eafdc7cf464069039b30ccd"},
-    {file = "phonenumbers-9.0.4.tar.gz", hash = "sha256:b1530fc2a7b67e4c37c63e8e736c7e6efe2fed283c1bbb5c08c4511ec0c160ed"},
+    {file = "phonenumbers-9.0.5-py2.py3-none-any.whl", hash = "sha256:7acef19817868a6f9cbc0d628dc5ad447b3768137e3d53c70dd6827a1ac040ba"},
+    {file = "phonenumbers-9.0.5.tar.gz", hash = "sha256:70fde168a92dd9c73f57872359515181d6cde6bb8e7ec5660e94c4ca45692c50"},
 ]
 
 [[package]]
 name = "platformdirs"
-version = "4.3.7"
+version = "4.3.8"
 description = "A small Python package for determining appropriate platform-specific dirs, e.g. a `user data dir`."
 optional = false
 python-versions = ">=3.9"
 groups = ["main", "dev"]
 files = [
-    {file = "platformdirs-4.3.7-py3-none-any.whl", hash = "sha256:a03875334331946f13c549dbd8f4bac7a13a50a895a0eb1e8c6a8ace80d40a94"},
-    {file = "platformdirs-4.3.7.tar.gz", hash = "sha256:eb437d586b6a0986388f0d6f74aa0cde27b48d0e3d66843640bfb6bdcdb6e351"},
+    {file = "platformdirs-4.3.8-py3-none-any.whl", hash = "sha256:ff7059bb7eb1179e2685604f4aaf157cfd9535242bd23742eadc3c13542139b4"},
+    {file = "platformdirs-4.3.8.tar.gz", hash = "sha256:3d512d96e16bcb959a814c9f348431070822a6496326a4be0911c40b5a74c2bc"},
 ]
 
 [package.extras]
@@ -3692,6 +3692,21 @@ files = [
 ]
 
 [[package]]
+name = "snakeviz"
+version = "2.2.2"
+description = "A web-based viewer for Python profiler output"
+optional = false
+python-versions = ">=3.9"
+groups = ["dev"]
+files = [
+    {file = "snakeviz-2.2.2-py3-none-any.whl", hash = "sha256:77e7b9c82f6152edc330040319b97612351cd9b48c706434c535c2df31d10ac5"},
+    {file = "snakeviz-2.2.2.tar.gz", hash = "sha256:08028c6f8e34a032ff14757a38424770abb8662fb2818985aeea0d9bc13a7d83"},
+]
+
+[package.dependencies]
+tornado = ">=2.0"
+
+[[package]]
 name = "sniffio"
 version = "1.3.1"
 description = "Sniff out which async library your code is running under"
@@ -3928,6 +3943,27 @@ files = [
 ]
 
 [[package]]
+name = "tornado"
+version = "6.4.2"
+description = "Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed."
+optional = false
+python-versions = ">=3.8"
+groups = ["dev"]
+files = [
+    {file = "tornado-6.4.2-cp38-abi3-macosx_10_9_universal2.whl", hash = "sha256:e828cce1123e9e44ae2a50a9de3055497ab1d0aeb440c5ac23064d9e44880da1"},
+    {file = "tornado-6.4.2-cp38-abi3-macosx_10_9_x86_64.whl", hash = "sha256:072ce12ada169c5b00b7d92a99ba089447ccc993ea2143c9ede887e0937aa803"},
+    {file = "tornado-6.4.2-cp38-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:1a017d239bd1bb0919f72af256a970624241f070496635784d9bf0db640d3fec"},
+    {file = "tornado-6.4.2-cp38-abi3-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:c36e62ce8f63409301537222faffcef7dfc5284f27eec227389f2ad11b09d946"},
+    {file = "tornado-6.4.2-cp38-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:bca9eb02196e789c9cb5c3c7c0f04fb447dc2adffd95265b2c7223a8a615ccbf"},
+    {file = "tornado-6.4.2-cp38-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:304463bd0772442ff4d0f5149c6f1c2135a1fae045adf070821c6cdc76980634"},
+    {file = "tornado-6.4.2-cp38-abi3-musllinux_1_2_i686.whl", hash = "sha256:c82c46813ba483a385ab2a99caeaedf92585a1f90defb5693351fa7e4ea0bf73"},
+    {file = "tornado-6.4.2-cp38-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:932d195ca9015956fa502c6b56af9eb06106140d844a335590c1ec7f5277d10c"},
+    {file = "tornado-6.4.2-cp38-abi3-win32.whl", hash = "sha256:2876cef82e6c5978fde1e0d5b1f919d756968d5b4282418f3146b79b58556482"},
+    {file = "tornado-6.4.2-cp38-abi3-win_amd64.whl", hash = "sha256:908b71bf3ff37d81073356a5fadcc660eb10c1476ee6e2725588626ce7e5ca38"},
+    {file = "tornado-6.4.2.tar.gz", hash = "sha256:92bad5b4746e9879fd7bf1eb21dce4e3fc5128d71601f80005afa39237ad620b"},
+]
+
+[[package]]
 name = "traitlets"
 version = "5.14.3"
 description = "Traitlets Python configuration system"
@@ -4054,14 +4090,14 @@ standard = ["colorama (>=0.4) ; sys_platform == \"win32\"", "httptools (>=0.6.3)
 
 [[package]]
 name = "virtualenv"
-version = "20.30.0"
+version = "20.31.1"
 description = "Virtual Python Environment builder"
 optional = false
 python-versions = ">=3.8"
 groups = ["dev"]
 files = [
-    {file = "virtualenv-20.30.0-py3-none-any.whl", hash = "sha256:e34302959180fca3af42d1800df014b35019490b119eba981af27f2fa486e5d6"},
-    {file = "virtualenv-20.30.0.tar.gz", hash = "sha256:800863162bcaa5450a6e4d721049730e7f2dae07720e0902b0e4040bd6f9ada8"},
+    {file = "virtualenv-20.31.1-py3-none-any.whl", hash = "sha256:f448cd2f1604c831afb9ea238021060be2c0edbcad8eb0a4e8b4e14ff11a5482"},
+    {file = "virtualenv-20.31.1.tar.gz", hash = "sha256:65442939608aeebb9284cd30baca5865fcd9f12b58bb740a24b220030df46d26"},
 ]
 
 [package.dependencies]
@@ -4339,4 +4375,4 @@ propcache = ">=0.2.1"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4"
-content-hash = "508e8161a2c4be7498c76dc7bb187259b697e182159fa5e29dc1595f1a814990"
+content-hash = "cf94fe061d8a55732b37e683bc784248156aeec78551518b2e3bbe3d2a1f63df"

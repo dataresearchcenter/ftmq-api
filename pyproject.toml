@@ -1,6 +1,6 @@
 [project]
 name = "ftmq-api"
-version = "3.0.0"
+version = "3.0.1"
 description = "FastAPI for FollowTheMoney data stores"
 authors = [{ name = "Simon Wörpel", email = "simon.woerpel@pm.me" }]
 license = "AGPLv3+"
@@ -15,8 +15,8 @@ classifiers = [
 ]
 requires-python = ">=3.11,<4"
 dependencies = [
-    "ftmq-search (>=0.0.3,<0.0.4)",
-    "ftmq (>=0.8.2,<0.9.0)",
+    "ftmq-search (>=0.0.4,<0.0.5)",
+    "ftmq (>=0.8.3,<0.9.0)",
     "anystore[redis] (>=0.3.2,<0.4.0)",
     "fastapi (>=0.115.12,<0.116.0)",
     "furl (>=2.1.4,<3.0.0)",
@@ -47,6 +47,7 @@ mkdocs-material = "^9.6.12"
 mkdocs-autorefs = "^1.4.1"
 mkdocstrings-python = "^1.16.10"
 mkdocs = "^1.6.1"
+snakeviz = "^2.2.2"
 
 [build-system]
 requires = ["poetry-core"]
@@ -56,4 +57,4 @@ build-backend = "poetry.core.masonry.api"
 FTMQ_API_CATALOG = "./tests/fixtures/catalog.json"
 REDIS_DEBUG = 1
 FTMQ_API_USE_CACHE = 1
-FTMQ_API_CACHE__URI = "redis://localhost"
+FTMQ_API_CACHE_URI = "redis://localhost"
