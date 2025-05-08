@@ -804,9 +804,9 @@ httpcore==1.0.6 ; python_version >= "3.11" and python_version < "4" \
 httpx==0.28.0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:0858d3bab51ba7e386637f22a61d8ccddaeec5f3fe4209da3a6168dbb91573e0 \
     --hash=sha256:dc0b419a0cfeb6e8b34e85167c0da2671206f5095f1baa9663d23bcfd6b535fc
-identify==2.6.2 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:c097384259f49e372f4ea00a19719d95ae27dd5ff0fd77ad630aa891306b82f3 \
-    --hash=sha256:fab5c716c24d7a789775228823797296a2994b075fb6080ac83a102772a98cbd
+identify==2.6.10 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:45e92fd704f3da71cc3880036633f48b4b7265fd4de2b57627cb157216eb7eb8 \
+    --hash=sha256:5f34248f54136beed1a7ba6a6b5c4b6cf21ff495aac7c359e1ef831ae3b8ab25
 idna==3.10 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:12f65c9b470abda6dc35cf8e63cc574b1c52b11df2c86030af0ac09b01b13ea9 \
     --hash=sha256:946d195a0d259cbba61165e88e65941f16e9b36ea6ddb97f00452bae8b1287d3
