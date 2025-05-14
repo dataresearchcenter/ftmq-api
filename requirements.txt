@@ -561,9 +561,8 @@ fingerprints==1.2.3 ; python_version >= "3.11" and python_version < "4" \
 flake8==7.1.1 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:049d058491e228e03e67b390f311bbf88fce2dbaa8fa673e7aea87b7198b8d38 \
     --hash=sha256:597477df7860daa5aa0fdd84bf5208a043ab96b8e96ab708770ae0364dd03213
-followthemoney==3.7.4 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:1e77d1aaafe30b59242e61f78a62a90a07037147021532f01a3bb5c915b74d27 \
-    --hash=sha256:3b5717b0757f8f5d3b484ebbbe014ce744b431477063842fc0732fee8ac2cdce
+followthemoney==3.8.4 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:68e63b2a529b5d9c1d009d4738606760c8c17ca5662945d5dd9ad52e793f60bf
 frozenlist==1.5.0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:000a77d6034fbad9b6bb880f7ec073027908f1b40254b5d6f26210d2dab1240e \
     --hash=sha256:03d33c2ddbc1816237a67f66336616416e2bbb6beb306e5f890f2eb22b959cdf \
