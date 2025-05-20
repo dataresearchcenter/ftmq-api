@@ -1829,9 +1829,9 @@ rigour==0.6.2 ; python_version >= "3.11" and python_version < "4" \
 rsa==4.9 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:90260d9058e514786967344d0ef75fa8727eed8a7d2e43ce9f4bcf1b536174f7 \
     --hash=sha256:e38464a49c6c85d7f1351b0126661487a7e0a14a50f1675ec50eb34d4f20ef21
-s3fs==2024.10.0 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:58b8c3650f8b99dbedf361543da3533aac8707035a104db5d80b094617ad4a3f \
-    --hash=sha256:7a2025d60d5b1a6025726b3a5e292a8e5aa713abc3b16fd1f81735181f7bb282
+s3fs==2025.5.0 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:4eb942ebadfb7423f695475519849862d7d88f6f139cd7d9a211e5eb6fd5fc93 \
+    --hash=sha256:8ddbdc83c98ed55c7397a295596a7106de6f7a126c45798a95ad4d280edb3611
 scikit-learn==1.5.0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:057b991ac64b3e75c9c04b5f9395eaf19a6179244c089afdebaad98264bff37c \
     --hash=sha256:118a8d229a41158c9f90093e46b3737120a165181a1b58c03461447aa4657415 \
