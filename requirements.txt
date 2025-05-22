@@ -1824,8 +1824,8 @@ requests==2.32.3 ; python_version >= "3.11" and python_version < "4" \
 rich==13.9.4 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:439594978a49a09530cff7ebc4b5c7103ef57baf48d5ea3184f21d9a2befa098 \
     --hash=sha256:6049d5e6ec054bf2779ab3358186963bac2ea89175919d699e378b99738c2a90
-rigour==0.6.2 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:a3de5d288edaa2d9765b15f683a4b7d2cd921ad79c1cafe7f3fa7df7758b5ec2
+rigour==0.12.2 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:b87f2941cbcaae6e8eb8297e1d38b73bbb121a3135c9c6397d15180245fc9b3b
 rsa==4.9 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:90260d9058e514786967344d0ef75fa8727eed8a7d2e43ce9f4bcf1b536174f7 \
     --hash=sha256:e38464a49c6c85d7f1351b0126661487a7e0a14a50f1675ec50eb34d4f20ef21
