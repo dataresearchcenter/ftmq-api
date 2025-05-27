@@ -114,9 +114,9 @@ annotated-types==0.7.0 ; python_version >= "3.11" and python_version < "4" \
 anyio==4.6.2.post1 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:4c8bc31ccdb51c7f7bd251f51c609e038d63e34219b44aa86e47576389880b4c \
     --hash=sha256:6d170c36fba3bdd840c73d3868c1e777e33676a69c3a72cf0a0d5d6d8009b61d
-anystore==0.1.13 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:ab98e6a720ce0c9982abad5da4e39667332a3a93d23eec0164b4b37962acf88c \
-    --hash=sha256:d5ed82fa4143ab696f7eda39d7b3d131d797e197ea0b609597f5c16bf2ea9731
+anystore==0.3.5 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:3060b1740a1e495d2f637a2b18ff490b87421ef309a14ee650ea5c3e6d031751 \
+    --hash=sha256:d9bce5165d8a98854d9051c60f52f32f70516d79dfbf71ef553c18a2c324b22d
 anystore[redis]==0.1.13 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:ab98e6a720ce0c9982abad5da4e39667332a3a93d23eec0164b4b37962acf88c \
     --hash=sha256:d5ed82fa4143ab696f7eda39d7b3d131d797e197ea0b609597f5c16bf2ea9731
