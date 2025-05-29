@@ -1495,9 +1495,9 @@ ptyprocess==0.7.0 ; python_version >= "3.11" and python_version < "4" and (sys_p
 pure-eval==0.2.3 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:1db8e35b67b3d218d818ae653e27f06c3aa420901fa7b081ca98cbedc874e0d0 \
     --hash=sha256:5f4e983f40564c576c7c8635ae88db5956bb2229d7e9237d03b3c0b0190eaf42
-pyaml==24.9.0 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:31080551502f1014852b3c966a96c796adc79b4cf86e165f28ed83455bf19c62 \
-    --hash=sha256:e78dee8b0d4fed56bb9fa11a8a7858e6fade1ec70a9a122cee6736efac3e69b5
+pyaml==25.5.0 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:5799560c7b1c9daf35a7a4535f53e2c30323f74cbd7cb4f2e715b16dd681a58a \
+    --hash=sha256:b9e0c4e58a5e8003f8f18e802db49fd0563ada587209b13e429bdcbefa87d035
 pyasn1-modules==0.4.1 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:49bfa96b45a292b711e986f222502c1c9a5e1f4e568fc30e2574a6c7d07838fd \
     --hash=sha256:c28e2dbf9c06ad61c71a075c7e0f9fd0f1b0bb2d2ad4377f240d33ac2ab60a7c
