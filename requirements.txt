@@ -1469,9 +1469,9 @@ propcache==0.2.0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:fa1076244f54bb76e65e22cb6910365779d5c3d71d1f18b275f1dfc7b0d71b4d \
     --hash=sha256:fc2db02409338bf36590aa985a461b2c96fce91f8e7e0f14c50c5fcc4f229016 \
     --hash=sha256:ffcad6c564fe6b9b8916c1aefbb37a362deebf9394bd2974e9d84232e3e08504
-proto-plus==1.25.0 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:c91fc4a65074ade8e458e95ef8bac34d4008daa7cce4a12d6707066fca648961 \
-    --hash=sha256:fbb17f57f7bd05a68b7707e745e26528b0b3c34e378db91eef93912c54982d91
+proto-plus==1.26.1 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:13285478c2dcf2abb829db158e1047e2f1e8d63a077d94263c2b88b043c75a66 \
+    --hash=sha256:21a515a4c4c0088a773899e23c7bbade3d18f9c66c73edd4c7ee3816bc96a012
 protobuf==6.31.1 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:0414e3aa5a5f3ff423828e1e6a6e907d6c65c1d5b7e6e975793d5590bdeecc16 \
     --hash=sha256:426f59d2964864a1a366254fa703b8632dcec0790d8862d30034d8245e1cd447 \
