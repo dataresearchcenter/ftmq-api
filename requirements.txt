@@ -4,9 +4,9 @@ adlfs==2024.7.0 ; python_version >= "3.11" and python_version < "4" \
 aiobotocore==2.15.2 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:9ac1cfcaccccc80602968174aa032bf978abe36bd4e55e6781d6500909af1375 \
     --hash=sha256:d4d3128b4b558e2b4c369bfa963b022d7e87303adb82eec623cec8aa77ae578a
-aiohappyeyeballs==2.4.3 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:75cf88a15106a5002a8eb1dab212525c00d1f4c0fa96e551c9fbe6f09a621586 \
-    --hash=sha256:8a7a83727b2756f394ab2895ea0765a0a8c475e3c71e98d43d76f22b4b435572
+aiohappyeyeballs==2.6.1 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:c3f9d0113123803ccadfdf3f0faa505bc78e6a72d1cc4806cbd719826e943558 \
+    --hash=sha256:f349ba8f4b75cb25c99c5c2d84e997e485204d2902a9597802b0371f09331fb8
 aiohttp==3.12.6 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:012ea107092d4465aeeb681d5b2fb8b51a847a72f0b71906f40876419fba1355 \
     --hash=sha256:0673bdc2914fed2651837e9ce45639cf09d342850274fa0d955d15f148082ab5 \
