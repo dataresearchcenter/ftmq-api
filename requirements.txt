@@ -674,9 +674,9 @@ ftmq==0.6.14 ; python_version >= "3.11" and python_version < "4" \
 furl==2.1.3 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:5a6188fe2666c484a12159c18be97a1977a71d632ef5bb867ef15f54af39cc4e \
     --hash=sha256:9ab425062c4217f9802508e45feb4a83e54324273ac4b202f1850363309666c0
-gcsfs==2024.10.0 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:5df54cfe568e8fdeea5aafa7fed695cdc69a9a674e991ca8c1ce634f5df1d314 \
-    --hash=sha256:bb2d23547e61203ea2dda5fa6c4b91a0c34b74ebe8bb6ab1926f6c33381bceb2
+gcsfs==2025.5.1 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:48712471ff71ac83d3e2152ba4dc232874698466e344d5e700feba06b0a0de7b \
+    --hash=sha256:ba945530cf4857cd9d599ccb3ae729c65c39088880b11c4df1fecac30df5f3e3
 google-api-core==2.23.0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:2ceb087315e6af43f256704b871d99326b1f12a9d6ce99beaedec99ba26a0ace \
     --hash=sha256:c20100d4c4c41070cf365f1d8ddf5365915291b5eb11b83829fbd1c999b5122f
