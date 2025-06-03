@@ -1334,9 +1334,9 @@ orjson==3.10.11 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:f35a1b9f50a219f470e0e497ca30b285c9f34948d3c8160d5ad3a755d9299433 \
     --hash=sha256:f4c57ea78a753812f528178aa2f1c57da633754c91d2124cb28991dab4c79a54 \
     --hash=sha256:f91d9eb554310472bd09f5347950b24442600594c2edc1421403d7610a0998fd
-packaging==24.2 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:09abb1bccd265c01f4a3aa3f7a7db064b36514d2cba19a2f694fe6150451a759 \
-    --hash=sha256:c228a6dc5e932d346bc5739379109d49e8853dd8223571c7c5b55260edc0b97f
+packaging==25.0 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:29572ef2b1f17581046b3a2227d5c611fb25ec70ca1ba8554b24b0e69331a484 \
+    --hash=sha256:d443872c98d677bf60f6a1f2f8c1cb748e8fe762d2bf9d3148b5599295b0fc4f
 pantomime==0.6.1 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:4ea567dffc2458a174cd624061a1a0efc081c858938d55291e4825e47a4fdb0f \
     --hash=sha256:6ff211788ecfbe2cdf79bf8617d7e2347b9d734ce3dac983cafa9673ed099789
