@@ -1821,9 +1821,9 @@ rich==13.9.4 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:6049d5e6ec054bf2779ab3358186963bac2ea89175919d699e378b99738c2a90
 rigour==0.13.0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:6a867076764689d4cc8219bc625432b0a20edf26acca3c271f4098dc47c3f01b
-rsa==4.9 ; python_version >= "3.11" and python_version < "4" \
-    --hash=sha256:90260d9058e514786967344d0ef75fa8727eed8a7d2e43ce9f4bcf1b536174f7 \
-    --hash=sha256:e38464a49c6c85d7f1351b0126661487a7e0a14a50f1675ec50eb34d4f20ef21
+rsa==4.9.1 ; python_version >= "3.11" and python_version < "4" \
+    --hash=sha256:68635866661c6836b8d39430f97a996acbd61bfa49406748ea243539fe239762 \
+    --hash=sha256:e7bdbfdb5497da4c07dfd35530e1a902659db6ff241e39d9953cad06ebd0ae75
 s3fs==2024.10.0 ; python_version >= "3.11" and python_version < "4" \
     --hash=sha256:58b8c3650f8b99dbedf361543da3533aac8707035a104db5d80b094617ad4a3f \
     --hash=sha256:7a2025d60d5b1a6025726b3a5e292a8e5aa713abc3b16fd1f81735181f7bb282
