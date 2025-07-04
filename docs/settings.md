@@ -1,0 +1,1 @@
+::: ftmq_api.settings

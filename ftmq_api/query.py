@@ -8,8 +8,10 @@ from ftmq.query import Query as _Query
 from ftmq.types import Schemata
 from pydantic import BaseModel, ConfigDict, Field
 
-from ftmq_api import settings
+from ftmq_api.settings import Settings
 from ftmq_api.store import Datasets
+
+settings = Settings()
 
 
 class RetrieveParams(BaseModel):
@@ -17,6 +19,7 @@ class RetrieveParams(BaseModel):
     featured: bool
     dehydrate: bool
     dehydrate_nested: bool
+    stats: bool
 
 
 class AggregationParams(BaseModel):
@@ -31,25 +34,25 @@ class AggregationParams(BaseModel):
 class BaseQueryParams(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
 
-    q: Annotated[
-        str | None,
-        FastQuery(
-            description="""Optional search query for name based search
-            (on regular endpoints) or full text search
-            (via ftmq-search) on /search endpoint"""
-        ),
-    ] = None
     dataset: Annotated[
         list[Datasets] | None,
         FastQuery(description="One or more dataset names to limit scope to"),
     ] = []
-    limit: int | None = settings.DEFAULT_LIMIT
+    limit: int | None = settings.default_limit
     page: int | None = 1
     schema_: Schemata | None = Field(
         None,
-        example="LegalEntity",
+        examples=["LegalEntity"],
         alias="schema",
     )
+    schema_include_matchable: Annotated[
+        bool | None,
+        FastQuery(description="Include matchable schemata for given schema lookup"),
+    ] = False
+    schema_include_descendants: Annotated[
+        bool | None,
+        FastQuery(description="Include schemata descendants for given schema lookup"),
+    ] = False
 
     def to_where_lookup_dict(self) -> dict[str, Any]:
         return {
@@ -58,8 +61,8 @@ class BaseQueryParams(BaseModel):
 
 
 class QueryParams(BaseQueryParams):
-    order_by: str | None = Field(None, example="-date")
-    reverse: str | None = Field(None, example="eu-id-1234")
+    order_by: str | None = Field(None, examples=["-date"])
+    reverse: str | None = Field(None, examples=["eu-id-1234"])
 
 
 META_FIELDS = (
@@ -87,8 +90,8 @@ class ViewQueryParams(QueryParams):
             if listish:
                 params[p] = listish
         params = cls(**params)
-        if not authenticated and params.limit > settings.DEFAULT_LIMIT:
-            params.limit = settings.DEFAULT_LIMIT
+        if not authenticated and params.limit > settings.default_limit:
+            params.limit = settings.default_limit
         return params
 
     def to_aggregator(self) -> Aggregator:
@@ -108,7 +111,11 @@ class Query(_Query):
         if params.dataset:
             q = q.where(dataset__in=params.dataset)
         if params.schema_:
-            q = q.where(schema=params.schema_)
+            q = q.where(
+                schema=params.schema_,
+                schema_include_descendants=params.schema_include_descendants,
+                schema_include_matchable=params.schema_include_matchable,
+            )
         if params.order_by:
             ascending = True
             if params.order_by.startswith("-"):
@@ -118,8 +125,6 @@ class Query(_Query):
         if params.reverse:
             q = q.where(reverse=params.reverse)
         q = q.where(**params.to_where_lookup_dict())
-        if params.q:
-            q = q.search(params.q)
         aggregator = params.to_aggregator()
         q.aggregations = aggregator.aggregations
         return q
@@ -127,6 +132,14 @@ class Query(_Query):
 
 class SearchQueryParams(BaseQueryParams):
     model_config = ConfigDict(populate_by_name=True)
+
+    q: Annotated[
+        str | None,
+        FastQuery(
+            description="""Search query for full text search
+            (via ftmq-search) on /search endpoint"""
+        ),
+    ] = None
 
     country: Annotated[
         list[str] | None,
@@ -146,8 +159,8 @@ class SearchQueryParams(BaseQueryParams):
             if listish:
                 params[p] = listish
         params = cls(**params)
-        if not authenticated and params.limit > settings.DEFAULT_LIMIT:
-            params.limit = settings.DEFAULT_LIMIT
+        if not authenticated and params.limit > settings.default_limit:
+            params.limit = settings.default_limit
         return params
 
 
@@ -158,7 +171,11 @@ class SearchQuery(_Query):
         if params.dataset:
             q = q.where(dataset__in=params.dataset)
         if params.schema_:
-            q = q.where(schema=params.schema_)
+            q = q.where(
+                schema=params.schema_,
+                schema_include_matchable=params.schema_include_matchable,
+                schema_include_descendants=params.schema_include_descendants,
+            )
         if params.country:
             q = q.where(country__in=params.country)
         if params.q:
