@@ -1,48 +1,13 @@
-import os
-
-from anystore.io import smart_read
-from banal import as_bool
+from anystore.model import StoreModel
 from nomenklatura.settings import DB_URL
-from normality import slugify
+from pydantic import BaseModel, Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from ftmq_api import __version__
 
-CATALOG = os.environ.get("CATALOG")
-RESOLVER = os.environ.get("RESOLVER", os.environ.get("RESOLVER_PATH"))
-
-FTM_STORE_URI = os.environ.get("FTM_STORE_URI", DB_URL)
-
-DATASETS = os.environ.get("EXPOSE_DATASETS", "*")  # all by default
-DATASETS_STATS = as_bool(os.environ.get("DATASETS_STATS", 1))
-
-DEBUG = as_bool(os.environ.get("DEBUG", 0))
-LOG_LEVEL = "DEBUG" if DEBUG else "INFO"
-BUILD_API_KEY = os.environ.get("BUILD_API_KEY", "secret-key-for-build")
-
-TITLE = os.environ.get("TITLE", "FollowTheMoney Store API")
-
-ALLOWED_ORIGIN = os.environ.get("ALLOWED_ORIGIN", "http://localhost:3000").split(",")
-CACHE = as_bool(os.environ.get("CACHE", 0))
-CACHE_TIMEOUT = int(os.environ.get("CACHE_TIMEOUT", 0))
-CACHE_PREFIX = os.environ.get(
-    "CACHE_PREFIX", f"ftmq_api/{__version__}/{slugify(TITLE)}"
-)
-REDIS_URL = os.environ.get("REDIS_URL", "redis://localhost:6379")
-DEFAULT_LIMIT = 100
-LOG_JSON = as_bool(os.environ.get("LOG_JSON", 0))
-INDEX_PROPERTIES = os.environ.get("INDEX_PROPERTIES", "").split(",")
-
-# Api documentation render
-CONTACT = {
-    "name": os.environ.get("CONTACT_AUTHOR", "Simon Wörpel"),
-    "url": os.environ.get(
-        "CONTACT_URL", "https://github.com/investigativedata/ftmq-api/"
-    ),
-    "email": os.environ.get("CONTACT_EMAIL", "simon@investigativedata.org"),
-}
-DESCRIPTION = """
+DEFAULT_DESCRIPTION = """
 This api exposes a
-[FollowTheMoney-Store](https://github.com/alephdata/followthemoney-store) as a
+[FollowTheMoney Store](https://github.com/alephdata/followthemoney-store) as a
 read-only endpoint that allows granular data fetching and searching.
 
 * [Available datasets in this api instance](/catalog)
@@ -66,6 +31,63 @@ Two more endpoints for catalog / dataset metadata:
 * Catalog overview: [`/catalog`](/catalog)
 * Dataset metadata: `/catalog/{dataset}`
 """
-DESCRIPTION_URI = os.environ.get("DESCRIPTION_URI")
-if DESCRIPTION_URI is not None:
-    DESCRIPTION = smart_read(DESCRIPTION_URI)
+
+
+class ApiContact(BaseModel):
+    name: str = "Data and Research Center – DARC"
+    url: str = "https://dataresearchcenter.org"
+    email: str = "hi@dataresearchcenter.org"
+
+
+class ApiInfo(BaseModel):
+    title: str = "FTMQ Api"
+    contact: ApiContact = ApiContact()
+    description_uri: str | None = None
+
+
+class Settings(BaseSettings):
+    """
+    `anystore` settings management using
+    [pydantic-settings](https://docs.pydantic.dev/latest/concepts/pydantic_settings/)
+
+    Note:
+        All settings can be set via environment variables in uppercase,
+        prepending `FTMQ_API_` (except for those with a given prefix)
+    """
+
+    model_config = SettingsConfigDict(
+        env_prefix="ftmq_api_",
+        env_nested_delimiter="_",
+        nested_model_default_partial_update=True,
+    )
+
+    debug: bool = Field(False, alias="debug")
+
+    catalog: str | None = None
+    """Catalog uri"""
+
+    store_uri: str = DB_URL
+    """ftmq store uri"""
+
+    build_api_key: str = "secret-key-for-build"
+    """Backend api key to use for build process (higher limit)"""
+
+    min_search_length: int = 3
+    """Minimum search query length"""
+
+    use_cache: bool = False
+    """Activate caching"""
+
+    cache: StoreModel = StoreModel(
+        uri=".cache", backend_config={"redis_prefix": f"ftmq-api/{__version__}"}
+    )
+    """Api cache (via anystore)"""
+
+    allowed_origin: list[str] = ["http://localhost:3000"]
+    """Allowed origins"""
+
+    default_limit: int = 100
+    """Default public pagination limit"""
+
+    info: ApiInfo = ApiInfo()
+    """Rendered information on redoc page"""

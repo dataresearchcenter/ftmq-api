@@ -11,7 +11,7 @@ from banal import clean_dict
 from fastapi import Request
 from followthemoney.types import registry
 from ftmq.aggregations import AggregatorResult
-from ftmq.model import Catalog, Dataset, DatasetStats
+from ftmq.model import DatasetStats
 from ftmq.types import CE, CEGenerator
 from ftmq_search.model import AutocompleteResult
 from furl import furl
@@ -86,8 +86,9 @@ class EntitiesResponse(BaseModel):
         query_data.pop("schema_", None)
         url.args.update(query_data)
         entities = [EntityResponse.from_entity(e, adjacents) for e in entities]
+        count = stats.entity_count if stats else count
         response = cls(
-            total=stats.entity_count if stats else count,
+            total=count,
             items=len(entities),
             query=query,
             entities=entities,
@@ -97,7 +98,7 @@ class EntitiesResponse(BaseModel):
         if query.page > 1:
             url.args["page"] = query.page - 1
             response.prev_url = str(url)
-        if query.limit * query.page < stats.entity_count if stats else count:
+        if query.limit * query.page < count:
             url.args["page"] = query.page + 1
             response.next_url = str(url)
         return response
@@ -136,29 +137,6 @@ class AggregationResponse(BaseModel):
             stats=stats,
             aggregations=agg_data,
             url=str(url),
-        )
-
-
-class DatasetResponse(Dataset):
-    entities_url: str | None = None
-
-    @classmethod
-    def from_dataset(cls, request: Request, dataset: Dataset) -> Self:
-        return cls(
-            **dataset.model_dump(),
-            entities_url=f"{request.base_url}entities?dataset={dataset.name}",
-        )
-
-
-class CatalogResponse(Catalog):
-    datasets: list[DatasetResponse]
-
-    @classmethod
-    def from_catalog(cls, request: Request, catalog: Catalog) -> Self:
-        return cls(
-            datasets=[
-                DatasetResponse.from_dataset(request, d) for d in catalog.datasets
-            ],
         )
 
 
